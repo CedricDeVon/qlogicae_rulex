@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+qlogicae/.qlogicae/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
