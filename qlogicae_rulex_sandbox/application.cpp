@@ -4,11 +4,11 @@
 
 #ifndef x64_MASM_ASSEMBLY
 
-extern "C" void qlogicae_sandbox__assembly();
+extern "C" void qlogicae_rulex_sandbox__assembly();
 
 #endif
 
-namespace QLogicaeSandbox
+namespace QLogicaeRulexSandbox
 {
 
 }

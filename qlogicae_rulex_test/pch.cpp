@@ -2,6 +2,6 @@
 
 #ifndef x64_MASM_ASSEMBLY
 
-extern "C" void qlogicae_test__assembly();
+extern "C" void qlogicae_rulex_test__assembly();
 
 #endif

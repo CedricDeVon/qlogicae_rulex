@@ -2,7 +2,7 @@
 
 #include "ui_application.h"
 
-namespace QLogicaeQtGUI
+namespace QLogicaeRulex
 {
     class Application : public QMainWindow
     {

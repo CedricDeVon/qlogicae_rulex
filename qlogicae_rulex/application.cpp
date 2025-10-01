@@ -4,11 +4,11 @@
 
 #ifndef x64_MASM_ASSEMBLY
 
-extern "C" void qlogicae_qt_gui__assembly();
+extern "C" void qlogicae_rulex__assembly();
 
 #endif
 
-namespace QLogicaeQtGUI
+namespace QLogicaeRulex
 {
     Application::Application(QWidget* parent)
         : QMainWindow(parent)

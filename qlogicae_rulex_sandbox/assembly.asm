@@ -4,9 +4,9 @@ OPTION CASEMAP: NONE
 .DATA
 .DATA?
 .CODE
-qlogicae_sandbox__assembly PROC
+qlogicae_rulex_sandbox__assembly PROC
 	RET
 
-qlogicae_sandbox__assembly ENDP
+qlogicae_rulex_sandbox__assembly ENDP
 
 END

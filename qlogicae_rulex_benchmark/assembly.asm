@@ -4,9 +4,9 @@ OPTION CASEMAP: NONE
 .DATA
 .DATA?
 .CODE
-qlogicae_plotica_benchmark__assembly PROC
+qlogicae_rulex_benchmark__assembly PROC
 	RET
 
-qlogicae_plotica_benchmark__assembly ENDP
+qlogicae_rulex_benchmark__assembly ENDP
 
 END

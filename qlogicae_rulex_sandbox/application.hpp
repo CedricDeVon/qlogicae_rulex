@@ -1,6 +1,6 @@
 #pragma once
 
-namespace QLogicaeSandbox
+namespace QLogicaeRulexSandbox
 {
 
 }

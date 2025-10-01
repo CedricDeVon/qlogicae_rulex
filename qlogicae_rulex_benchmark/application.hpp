@@ -1,6 +1,6 @@
 #pragma once
 
-namespace QLogicaePloticaBenchmark
+namespace QLogicaeRulexBenchmark
 {
 
 }

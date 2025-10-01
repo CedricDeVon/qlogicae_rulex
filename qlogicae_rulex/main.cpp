@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QLogicaeQtGUI::Application window;
+    QLogicaeRulex::Application window;
     window.show();
 
     return app.exec();

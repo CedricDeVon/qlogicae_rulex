@@ -1,6 +1,6 @@
 #include "pch.hpp"
 
-namespace QLogicaeTest
+namespace QLogicaeRulexTest
 {
 	TEST(TestCaseName, TestName)
 	{

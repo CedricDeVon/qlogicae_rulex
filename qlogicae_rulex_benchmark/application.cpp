@@ -4,11 +4,11 @@
 
 #ifndef x64_MASM_ASSEMBLY
 
-extern "C" void qlogicae_plotica_benchmark__assembly();
+extern "C" void qlogicae_rulex_benchmark__assembly();
 
 #endif
 
-namespace QLogicaePloticaBenchmark
+namespace QLogicaeRulexBenchmark
 {
 
 }
