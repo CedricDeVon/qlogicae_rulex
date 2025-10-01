@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qlogicae_rulex_core", "qlog
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qlogicae_cogita", "..\qlogicae_cogita\qlogicae_cogita\qlogicae_cogita.vcxproj", "{86A538FC-6F24-4FBA-B374-CAE6D98DFE7C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qlogicae_cogita_core", "..\qlogicae_cogita\qlogicae_cogita_core\qlogicae_cogita_core.vcxproj", "{F8AE0748-1235-4113-B1CE-9538CF1F2BD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -83,6 +85,10 @@ Global
 		{86A538FC-6F24-4FBA-B374-CAE6D98DFE7C}.Debug|x64.Build.0 = Debug|x64
 		{86A538FC-6F24-4FBA-B374-CAE6D98DFE7C}.Release|x64.ActiveCfg = Release|x64
 		{86A538FC-6F24-4FBA-B374-CAE6D98DFE7C}.Release|x64.Build.0 = Release|x64
+		{F8AE0748-1235-4113-B1CE-9538CF1F2BD2}.Debug|x64.ActiveCfg = Debug|x64
+		{F8AE0748-1235-4113-B1CE-9538CF1F2BD2}.Debug|x64.Build.0 = Debug|x64
+		{F8AE0748-1235-4113-B1CE-9538CF1F2BD2}.Release|x64.ActiveCfg = Release|x64
+		{F8AE0748-1235-4113-B1CE-9538CF1F2BD2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

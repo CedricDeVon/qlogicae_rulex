@@ -177,8 +177,10 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.hpp" />
     <ClInclude Include="qlogicae_rulex_core.hpp" />
+    <ClInclude Include="utilities.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="framework.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -187,6 +189,7 @@
     </ClCompile>
     <ClCompile Include="application.cpp" />
     <ClCompile Include="qlogicae_rulex_core.cpp" />
+    <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <MASM Include="assembly.asm" />

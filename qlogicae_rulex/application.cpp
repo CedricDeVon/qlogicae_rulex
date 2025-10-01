@@ -30,13 +30,13 @@ namespace QLogicaeRulex
         this->setWindowIcon(
             QIcon(
                 QString::fromStdString(
-                    ":/Application/qlogicae/application/assets/application.ico"
+                    QLogicaeRulexCore::UTILITIES.APPLICATION_LOGO
                 )
             )
         );
         this->setWindowTitle(
             QString::fromStdString(
-                "QLogicae Rulex"
+                QLogicaeCore::APPLICATION.get_qlogicae_name()
             )
         );
         _change_screen_type(
