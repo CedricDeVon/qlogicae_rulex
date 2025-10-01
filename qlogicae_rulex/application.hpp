@@ -9,10 +9,15 @@ namespace QLogicaeRulex
         Q_OBJECT
 
     public:
-        Application(QWidget *parent = nullptr);
+        explicit Application(QWidget *parent = nullptr);
         ~Application();
 
     private:
-        Ui::ApplicationClass ui;
+        Ui::ApplicationClass _ui;
+
+        // void _setup_assets();
+        // void _setup_widgets();
+        void _setup_window_screen();
+        void _change_screen_type(uint8_t index);
     };
 }

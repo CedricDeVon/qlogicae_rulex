@@ -13,11 +13,46 @@ namespace QLogicaeRulex
     Application::Application(QWidget* parent)
         : QMainWindow(parent)
     {
-        ui.setupUi(this);
+        _ui.setupUi(this);
+
+        _setup_window_screen();
+        // _setup_assets();
+        // _setup_widgets();
     }
 
     Application::~Application()
     {
 
+    }
+
+    void Application::_setup_window_screen()
+    {
+        this->setWindowIcon(
+            QIcon(
+                QString::fromStdString(
+                    ":/Application/qlogicae/application/assets/application.ico"
+                )
+            )
+        );
+        this->setWindowTitle(
+            QString::fromStdString(
+                "QLogicae Rulex"
+            )
+        );
+        _change_screen_type(
+            0
+        );
+    }
+
+    void Application::_change_screen_type(uint8_t index)
+    {
+        switch (index)
+        {
+            case (0): this->showNormal(); break;
+            case (1): this->showFullScreen(); break;
+            case (2): this->setWindowState(Qt::WindowMinimized); break;
+            case (3): this->showMaximized(); break;
+            default: this->showNormal(); break;
+        }
     }
 }
