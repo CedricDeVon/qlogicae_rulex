@@ -90,7 +90,7 @@
       <LinkTimeCodeGeneration>
       </LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(SolutionDir)$(IntDir)qlogicae_core;$(SolutionDir)$(IntDir)qlogicae_rulex_core</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Ole32.lib;qlogicae_core.lib;qlogicae_rulex_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ole32.lib;Shlwapi.lib;Rpcrt4.lib;qlogicae_core.lib;qlogicae_rulex_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "C:\Qt\6.9.1\msvc2022_64\bin\Qt6Cored.dll" "$(OutDir)" /Y /F
@@ -124,7 +124,7 @@ xcopy "C:\Qt\6.9.1\msvc2022_64\plugins\platforms\qwindowsd.dll" "$(OutDir)platfo
     <Link>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(SolutionDir)$(IntDir)qlogicae_core;$(SolutionDir)$(IntDir)qlogicae_rulex_core</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Ole32.lib;qlogicae_core.lib;qlogicae_rulex_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ole32.lib;Shlwapi.lib;Rpcrt4.lib;qlogicae_core.lib;qlogicae_rulex_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "C:\Qt\6.9.1\msvc2022_64\bin\Qt6Core.dll" "$(OutDir)" /Y /F

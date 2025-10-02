@@ -5,7 +5,7 @@ namespace QLogicaeRulexCore
     class Utilities
     {
     public:        
-        // QLogicaeCore::RocksDBDatabase APPLICATION_SETTINGS_CACHE;
+        QLogicaeCore::RocksDBDatabase APPLICATION_SETTINGS_CACHE;
         
         const std::string APPLICATION_LOGO =
             ":/Application/qlogicae/application/assets/application.ico";
