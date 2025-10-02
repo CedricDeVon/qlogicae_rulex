@@ -16,6 +16,6 @@ namespace QLogicaeRulexCore
         FuzzyExpertSystemAI& operator = (const FuzzyExpertSystemAI&) = delete;
     };
 
-    inline static FuzzyExpertSystemAI& UTILITIES =
+    inline static FuzzyExpertSystemAI& FUZZY_EXPERT_SYSTEM_AI =
         FuzzyExpertSystemAI::get_instance();
 }

@@ -173,18 +173,33 @@ xcopy "C:\Qt\6.9.1\msvc2022_64\plugins\platforms\qwindows.dll" "$(OutDir)platfor
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="application.qrc" />
+    <QtUic Include="about.ui" />
     <QtUic Include="application.ui" />
     <QtMoc Include="application.hpp" />
+    <ClCompile Include="about.cpp" />
     <ClCompile Include="application.cpp" />
+    <ClCompile Include="evaluation.cpp" />
+    <ClCompile Include="loading.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtMoc Include="loading.hpp" />
+    <QtMoc Include="evaluation.h" />
+    <QtMoc Include="about.h" />
     <ClInclude Include="main.hpp" />
+    <QtMoc Include="mainmenu.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="splash.hpp" />
     <ClInclude Include="stdafx.h" />
+    <ClCompile Include="mainmenu.cpp" />
+    <ClCompile Include="splash.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <QtUic Include="evaluation.ui" />
+    <QtUic Include="loading.ui" />
+    <QtUic Include="mainmenu.ui" />
+    <QtUic Include="splash.ui" />
   </ItemGroup>
   <ItemGroup>
     <MASM Include="assembly.asm" />

@@ -46,6 +46,21 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="splash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainmenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="evaluation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="about.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="assembly.asm">
@@ -60,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="splash.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -203,5 +221,36 @@
     <Image Include="qlogicae\application\assets\application.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="splash.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="loading.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="mainmenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="evaluation.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="about.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="loading.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mainmenu.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="evaluation.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="about.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

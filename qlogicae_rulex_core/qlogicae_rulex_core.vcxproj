@@ -175,12 +175,16 @@
   <ItemGroup>
     <ClInclude Include="application.hpp" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="fuzzy_expert_system_ai.hpp" />
+    <ClInclude Include="code_lexer.hpp" />
     <ClInclude Include="pch.hpp" />
     <ClInclude Include="qlogicae_rulex_core.hpp" />
     <ClInclude Include="utilities.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="framework.cpp" />
+    <ClCompile Include="fuzzy_expert_system_ai.cpp" />
+    <ClCompile Include="code_lexer.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
