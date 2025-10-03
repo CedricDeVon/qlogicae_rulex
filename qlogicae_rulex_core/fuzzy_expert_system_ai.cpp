@@ -272,6 +272,39 @@ namespace QLogicaeRulexCore
                 }
             }
 
+            std::unordered_map<std::string, double> defuzzification_result;
+            for (auto& [key, value] : selected_outptut_variables)
+            {
+                defuzzification_result[key] =
+                    ((_organized_classifications[key].get_maximum() - _organized_classifications[key].get_minimum()) / 2) * ((2 * value) - std::pow(value, 2));
+            }
+
+
+
+            double centroid_x = 0;
+            double centroid_y = 0;
+            for (auto& [key, value] : defuzzification_result)
+            {
+                centroid_x += _organized_classifications[key].get_middle() * value;
+                centroid_y += value;
+            }
+            double centroid = centroid_x / centroid_y;
+
+            double final_value = 0;
+            std::string final_classification = "";
+            std::unordered_map<std::string, double> degree_of_truth_result;
+            for (auto& [key, value] : selected_outptut_variables)
+            {
+                double dom = _organized_classifications[key].calculate_degree_of_membership(centroid);
+                degree_of_truth_result[key] = dom;                
+                if (final_value < dom)
+                {
+                    final_value = dom;
+                    final_classification = key;
+                }
+            }
+
+
 
             for (auto& line_count_variable : selected_line_count_variables)
             {
@@ -298,7 +331,20 @@ namespace QLogicaeRulexCore
                 std::cout << key << " : " << value << "\n";
             }
             std::cout << "\n";
+            for (auto& [key, value] : defuzzification_result)
+            {
+                std::cout << key << " : " << value << "\n";
+            }
+            std::cout << "\n";
+            for (auto& [key, value] : degree_of_truth_result)
+            {
+                std::cout << key << " : " << value << "\n";
+            }
+            std::cout << "\n";
 
+
+            std::cout << final_value << "\n";
+            std::cout << final_classification << "\n";
 
 
 
