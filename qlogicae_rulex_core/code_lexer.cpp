@@ -9,28 +9,30 @@ namespace QLogicaeRulexCore
 
     }
 
-    CodeLexerResult CodeLexer::evaluate(const std::string& text)
+    CodeLexerOutput CodeLexer::evaluate(
+        const CodeLexerInput& input
+    )
     {
         try
         {
-            CodeLexerResult result;
+            CodeLexerOutput output;
 
-            if (!text.size())
+            if (!input.text.size())
             {
-                return result;
+                return output;
             }
 
-            for (const auto& line : absl::StrSplit(text, '\n'))
+            for (const auto& line : absl::StrSplit(input.text, '\n'))
             {
-                if (result.longest_line_size < line.size())
+                if (output.longest_line_size < line.size())
                 {
-                    result.longest_line_size = line.size();
+                    output.longest_line_size = line.size();
                 }
 
-                ++result.line_count;
+                ++output.line_count;
             }
 
-            return result;
+            return output;
         }
         catch (const std::exception& exception)
         {

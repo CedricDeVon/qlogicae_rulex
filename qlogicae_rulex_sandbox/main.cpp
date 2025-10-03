@@ -3,15 +3,11 @@
 #include "main.hpp"
 
 int main(int argc, char** argv)
-{        
-    QLogicaeRulexCore::CodeLexerResult result = QLogicaeRulexCore::CODE_LEXER.evaluate(
-        "First line\nSecond line\nThird line"
-    );
-
-    std::cout << result.is_successful << "\n";
-    std::cout << result.line_count << "\n";
-    std::cout << result.longest_line_size << "\n";
-    std::cout << result.message << "\n";
+{            
+    QLogicaeRulexCore::FuzzyExpertSystemAIOutput output =
+        QLogicaeRulexCore::FUZZY_EXPERT_SYSTEM_AI.evaluate({
+            .text = "aaaaaaaaaaaaaaaaaaaa\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\na\n"
+        });
 
     std::cout << "Enter to exit...\n";
 

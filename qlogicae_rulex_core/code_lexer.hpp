@@ -2,18 +2,23 @@
 
 namespace QLogicaeRulexCore
 {
-    struct CodeLexerResult
+    struct CodeLexerInput
+    {
+        std::string text = "";
+    };
+
+    struct CodeLexerOutput
     {
         bool is_successful = true;
         std::string message = "";
-        uint64_t line_count = 0;
-        uint64_t longest_line_size = 0;
+        double line_count = 0;
+        double longest_line_size = 0;
     };
 
     class CodeLexer
     {
     public:
-        CodeLexerResult evaluate(const std::string& text);
+        CodeLexerOutput evaluate(const CodeLexerInput& input);
 
         static CodeLexer& get_instance();
 
