@@ -11,9 +11,19 @@ namespace QLogicaeRulexCore
     public:
         FuzzyExpertSystemAIOutput evaluate(const FuzzyExpertSystemAIInput& input);
 
+        std::future<FuzzyExpertSystemAIOutput> evaluate_async(const FuzzyExpertSystemAIInput& input);
+
         static FuzzyExpertSystemAI& get_instance();
 
     protected:
+        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _line_count_level_input_variables;
+
+        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _longest_line_size_level_input_variables;
+
+        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _organization_level_output_variables;
+
+        std::unordered_map<std::string, std::unordered_map<std::string, std::string>> _organization_level_output_variable_fuzzy_ruleset;
+
         FuzzyExpertSystemAI();
         
         ~FuzzyExpertSystemAI() = default;
@@ -26,14 +36,6 @@ namespace QLogicaeRulexCore
         
         FuzzyExpertSystemAI& operator = (const FuzzyExpertSystemAI&) = delete;
 
-        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _line_count_level_input_variables;
-
-        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _longest_line_size_level_input_variables;
-
-        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _organization_level_output_variables;
-
-        std::unordered_map<std::string, std::unordered_map<std::string, std::string>> _organization_level_output_variable_fuzzy_ruleset;
-    
         void _extract_code_lexer_data(
             const FuzzyExpertSystemAIInput& input,
             CodeLexerOutput& code_lexer_output

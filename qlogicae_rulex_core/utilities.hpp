@@ -2,24 +2,24 @@
 
 namespace QLogicaeRulexCore
 {    
-    enum class FuzzyExpertSystemAILineCountVariable : uint8_t
+    enum class FuzzyExpertSystemAILineCounLevelVariable : uint8_t
     {
         SMALL,
         MEDIUM,
         LARGE
     };
 
-    enum class FuzzyExpertSystemAILongestLineSizeVariable : uint8_t
+    enum class FuzzyExpertSystemAILongestLineSizeLevelVariable : uint8_t
     {
         SHORT,
         MEDIUM,
         LONG
     };
 
-    enum class FuzzyExpertSystemAIOrganizedClassification : uint8_t
+    enum class FuzzyExpertSystemAIOrganizationLevelClassification : uint8_t
     {
         ORGANIZED,
-        MILDLY_ORGANIZED,
+        MIXED,
         UNORGANIZED
     };
 
@@ -89,6 +89,48 @@ namespace QLogicaeRulexCore
         
         const std::string APPLICATION_LOGO =
             ":/Application/qlogicae/application/assets/application.ico";
+
+        const std::unordered_map<FuzzyExpertSystemAILineCounLevelVariable, std::string> FUZZY_EXPERT_SYSTEM_AI_LINE_COUNT_LEVEL_VARIABLE_ENUMS =
+        {
+            { FuzzyExpertSystemAILineCounLevelVariable::SMALL, "small" },
+            { FuzzyExpertSystemAILineCounLevelVariable::MEDIUM, "medium" },
+            { FuzzyExpertSystemAILineCounLevelVariable::LARGE, "large" }
+        };
+
+        const std::unordered_map<std::string, FuzzyExpertSystemAILineCounLevelVariable> FUZZY_EXPERT_SYSTEM_AI_LINE_COUNT_LEVEL_VARIABLE_STRINGS =
+        {
+            { "small", FuzzyExpertSystemAILineCounLevelVariable::SMALL},
+            { "medium", FuzzyExpertSystemAILineCounLevelVariable::MEDIUM},
+            { "large", FuzzyExpertSystemAILineCounLevelVariable::LARGE}
+        };
+
+        const std::unordered_map<FuzzyExpertSystemAILongestLineSizeLevelVariable, std::string> FUZZY_EXPERT_SYSTEM_AI_LONGEST_LINE_SIZE_LEVEL_VARIABLE_ENUMS =
+        {
+            { FuzzyExpertSystemAILongestLineSizeLevelVariable::SHORT, "short" },
+            { FuzzyExpertSystemAILongestLineSizeLevelVariable::MEDIUM, "medium" },
+            { FuzzyExpertSystemAILongestLineSizeLevelVariable::LONG, "long" }
+        };
+
+        const std::unordered_map<std::string, FuzzyExpertSystemAILongestLineSizeLevelVariable> FUZZY_EXPERT_SYSTEM_AI_LONGEST_LINE_SIZE_LEVEL_VARIABLE_STRINGS =
+        {
+            { "short", FuzzyExpertSystemAILongestLineSizeLevelVariable::SHORT },
+            { "medium", FuzzyExpertSystemAILongestLineSizeLevelVariable::MEDIUM },
+            { "long", FuzzyExpertSystemAILongestLineSizeLevelVariable::LONG }
+        };
+
+        const std::unordered_map<FuzzyExpertSystemAIOrganizationLevelClassification, std::string> FUZZY_EXPERT_SYSTEM_AI_ORGANIZATION_LEVEL_CLASSIFICATOIN_ENUMS =
+        {
+            { FuzzyExpertSystemAIOrganizationLevelClassification::ORGANIZED, "organized" },
+            { FuzzyExpertSystemAIOrganizationLevelClassification::MIXED, "mixed" },
+            { FuzzyExpertSystemAIOrganizationLevelClassification::UNORGANIZED, "unorganized" }
+        };
+
+        const std::unordered_map<std::string, FuzzyExpertSystemAIOrganizationLevelClassification> FUZZY_EXPERT_SYSTEM_AI_ORGANIZATION_LEVEL_CLASSIFICATOIN_STRINGS =
+        {
+            { "organized", FuzzyExpertSystemAIOrganizationLevelClassification::ORGANIZED },
+            { "mixed", FuzzyExpertSystemAIOrganizationLevelClassification::MIXED },
+            { "unorganized", FuzzyExpertSystemAIOrganizationLevelClassification::UNORGANIZED }
+        };
 
         static Utilities& get_instance();
 

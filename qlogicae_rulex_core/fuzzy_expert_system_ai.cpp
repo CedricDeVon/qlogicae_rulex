@@ -23,7 +23,7 @@ namespace QLogicaeRulexCore
         _organization_level_output_variables =
         {
             { "organized", { 0, 10, 21 } },
-            { "somewhat-organized", { 19, 30, 41 } },
+            { "mixed", { 19, 30, 41 } },
             { "unorganized", { 39, 60, 81 } }
         };
 
@@ -33,15 +33,15 @@ namespace QLogicaeRulexCore
                 "small",
                 {
                     { "short", "organized" },
-                    { "medium", "somewhat-organized" },
-                    { "long", "somewhat-organized" }
+                    { "medium", "mixed" },
+                    { "long", "mixed" }
                 }
             },
             {
                 "medium",
                 {
-                    { "short", "somewhat-organized" },
-                    { "medium", "somewhat-organized" },
+                    { "short", "mixed" },
+                    { "medium", "mixed" },
                     { "long", "unorganized" }
                 }
             },
@@ -144,6 +144,18 @@ namespace QLogicaeRulexCore
         }
     }
 
+
+    std::future<FuzzyExpertSystemAIOutput> FuzzyExpertSystemAI::evaluate_async(
+        const FuzzyExpertSystemAIInput& input
+    )
+    {
+        return std::async(std::launch::async, [this, input]() -> FuzzyExpertSystemAIOutput
+            {
+                return evaluate(input);
+            }
+        );
+    }
+    
     void FuzzyExpertSystemAI::_extract_code_lexer_data(
         const FuzzyExpertSystemAIInput& input,
         CodeLexerOutput& code_lexer_output
@@ -354,57 +366,3 @@ namespace QLogicaeRulexCore
         return instance;
     }
 }
-
-
-/*
-std::cout << output.code_lexer_output.line_count << "\n";
-std::cout << output.code_lexer_output.longest_line_size << "\n";
-for (const auto& value :
-    output.selected_longest_line_size_level_input_variables)
-{
-    std::cout << value << "\n";
-}
-std::cout << "\n";
-for (const auto& value :
-    output.selected_longest_line_size_level_input_variables)
-{
-    std::cout << value << "\n";
-}
-std::cout << "\n";
-for (const auto& value :
-    output.selected_line_count_level_input_variable_degree_of_memberships)
-{
-    std::cout << value << "\n";
-}
-std::cout << "\n";
-for (const auto& value :
-    output.selected_longest_line_size_level_input_variable_degree_of_memberships)
-{
-    std::cout << value << "\n";
-}
-std::cout << "\n";
-for (auto& [key, value] :
-    output.selected_organized_level_outptut_variables)
-{
-    std::cout << key << " : " << value << "\n";
-}
-std::cout << "\n";
-for (auto& [key, value] :
-    output.defuzzified_organized_level_outptut_results)
-{
-    std::cout << key << " : " << value << "\n";
-}
-std::cout << "\n";
-
-std::cout << output.centroid << "\n";
-std::cout << output.final_organized_level_outptut_value << "\n";
-std::cout << output.final_organized_level_outptut_variable << "\n";
-std::cout << "\n";
-
-for (auto& [key, value] :
-    output.degree_of_truths)
-{
-    std::cout << key << " : " << value << "\n";
-}
-std::cout << "\n";
-*/
