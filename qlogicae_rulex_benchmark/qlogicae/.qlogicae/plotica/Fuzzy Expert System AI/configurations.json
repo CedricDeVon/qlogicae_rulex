@@ -1,0 +1,46 @@
+{
+	"benchmarks": {
+		"static_input_count": 1,
+		"static_iteration_count": 1,
+		"starting_input_count": 1,
+		"incremental_input_count": 1,
+		"ending_input_count": 100,
+		"input_retry_count": 100,
+		"warmup_input_count": 10,
+		"maximum_output_count": 1000000
+	},
+	"gnuplot": {
+		"title": "Fuzzy Expert System AI",
+		"type": "lineplot",
+		"x_title": "Input Size",
+		"y_title": "Time",
+		"legend_alignment": "top",
+		"y_axis_time_scale_unit": "s"
+	},
+	"is_enabled": {
+		"execution": true,
+		"file_output": true,
+		"default_line_colors": true,
+		"gnuplot_output": true,
+		"csv_output": true,
+		"json_output": true,
+		"jpg_output": false,
+		"html_output": false,
+		"svg_output": false,
+		"gif_output": false,
+		"txt_output": false,
+		"eps_output": false,
+		"tex_output": false
+	},
+	"suspects": {
+		 "titles": [
+			"evaluate()"
+		],
+		 "color_1s": [
+			""
+		],
+		 "color_2s": [
+			""
+		]
+	}
+}

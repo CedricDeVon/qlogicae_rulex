@@ -130,7 +130,7 @@
       <LinkTimeCodeGeneration>
       </LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(SolutionDir)$(IntDir)qlogicae_core;$(SolutionDir)$(IntDir)qlogicae_plotica;$(SolutionDir)$(IntDir)qlogicae_rulex_core</AdditionalLibraryDirectories>
-      <AdditionalDependencies>qlogicae_core.lib;qlogicae_plotica.lib;qlogicae_rulex_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ole32.lib;Shlwapi.lib;Rpcrt4.lib;qlogicae_core.lib;qlogicae_plotica.lib;qlogicae_rulex_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -159,7 +159,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(SolutionDir)$(IntDir)qlogicae_core;$(SolutionDir)$(IntDir)qlogicae_plotica;$(SolutionDir)$(IntDir)qlogicae_rulex_core</AdditionalLibraryDirectories>
-      <AdditionalDependencies>qlogicae_core.lib;qlogicae_plotica.lib;qlogicae_rulex_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ole32.lib;Shlwapi.lib;Rpcrt4.lib;qlogicae_core.lib;qlogicae_plotica.lib;qlogicae_rulex_core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
