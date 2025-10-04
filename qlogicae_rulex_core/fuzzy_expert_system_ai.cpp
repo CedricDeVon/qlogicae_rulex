@@ -4,85 +4,55 @@
 
 namespace QLogicaeRulexCore
 {
-    FuzzyExpertSystemAIVariable::FuzzyExpertSystemAIVariable(
-        const double& minimum,
-        const double& middle,
-        const double& maximum,
-        const std::string& name
-    )
-    {
-        _name = name;
-        _minimum = minimum;
-        _middle = middle;
-        _maximum = maximum;
-    }
-
-    std::string FuzzyExpertSystemAIVariable::get_name()
-    {
-        return _name;
-    }
-
-    double FuzzyExpertSystemAIVariable::get_minimum()
-    {
-        return _minimum;
-    }
-
-    double FuzzyExpertSystemAIVariable::get_middle()
-    {
-        return _middle;
-    }
-
-    double FuzzyExpertSystemAIVariable::get_maximum()
-    {
-        return _maximum;
-    }
-
-    double FuzzyExpertSystemAIVariable::calculate_degree_of_membership(
-        const double& value
-    )
-    {
-        if (value > _middle)
-        {
-            return (_maximum - value) / (_maximum - _middle);
-        }
-        else if (value == _middle)
-        {
-            return 1;
-        }
-        else
-        {
-            return (value - _minimum) / (_middle - _minimum);
-        }
-    }
-
-    bool FuzzyExpertSystemAIVariable::is_within_bounds(
-        const double& value
-    )
-    {
-        return (_minimum <= value && value <= _maximum);
-    }
-
     FuzzyExpertSystemAI::FuzzyExpertSystemAI()
     {
-        _line_count_variables =
+        _line_count_level_input_variables =
         {
-            FuzzyExpertSystemAIVariable(0, 50, 110, "small"),
-            FuzzyExpertSystemAIVariable(90, 200, 410, "medium"),
-            FuzzyExpertSystemAIVariable(390, 800, 1610, "large")
+            { "small", { 0, 50, 110 } },
+            { "medium", { 90, 200, 410 } },
+            { "large", { 390, 800, 1610 } }
         };
 
-        _longest_line_size_variables =
+        _longest_line_size_level_input_variables =
         {
-            FuzzyExpertSystemAIVariable(0, 10, 21, "short"),
-            FuzzyExpertSystemAIVariable(19, 50, 81, "medium"),
-            FuzzyExpertSystemAIVariable(80, 120, 161, "long")
+            { "short", { 0, 10, 21 } },
+            { "medium", { 19, 50, 81 } },
+            { "long", { 80, 120, 161 } }
         };
 
-        _organized_classifications =
+        _organization_level_output_variables =
         {
-            { "organized", FuzzyExpertSystemAIVariable(0, 10, 21, "organized")},
-            { "mildly-organized", FuzzyExpertSystemAIVariable(19, 30, 41, "mildly-organized") },
-            { "unorganized", FuzzyExpertSystemAIVariable(39, 60, 81, "unorganized") }
+            { "organized", { 0, 10, 21 } },
+            { "somewhat-organized", { 19, 30, 41 } },
+            { "unorganized", { 39, 60, 81 } }
+        };
+
+        _organization_level_output_variable_fuzzy_ruleset =
+        {
+            {
+                "small",
+                {
+                    { "short", "organized" },
+                    { "medium", "somewhat-organized" },
+                    { "long", "somewhat-organized" }
+                }
+            },
+            {
+                "medium",
+                {
+                    { "short", "somewhat-organized" },
+                    { "medium", "somewhat-organized" },
+                    { "long", "unorganized" }
+                }
+            },
+            {
+                "large",
+                {
+                    { "short", "unorganized" },
+                    { "medium", "unorganized" },
+                    { "long", "unorganized" }
+                }
+            }
         };
     }
 
@@ -94,259 +64,73 @@ namespace QLogicaeRulexCore
         {
             FuzzyExpertSystemAIOutput output;
 
-            CodeLexerOutput code_lexer_output = CODE_LEXER.evaluate({
-                .text = input.text
-                });
-            std::cout << code_lexer_output.line_count << "\n";
-            std::cout << code_lexer_output.longest_line_size << "\n";
+            CodeLexerOutput& code_lexer_output =
+                output.code_lexer_output;
+            std::vector<std::string>& selected_line_count_level_input_variables =
+                output.selected_line_count_level_input_variables;
+            std::vector<std::string>& selected_longest_line_size_level_input_variables =
+                output.selected_longest_line_size_level_input_variables;
+            std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships =
+                output.selected_line_count_level_input_variable_degree_of_memberships;
+            std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships =
+                output.selected_longest_line_size_level_input_variable_degree_of_memberships;
+            std::unordered_map<std::string, double>& selected_organized_level_outptut_variables =
+                output.selected_organized_level_outptut_variables;
+            std::unordered_map<std::string, double>& defuzzified_organized_level_outptut_results =
+                output.defuzzified_organized_level_outptut_results;
+            double& centroid = output.centroid;
+            double& final_organized_level_outptut_value =
+                output.final_organized_level_outptut_value;
+            std::string& final_organized_level_outptut_variable =
+                output.final_organized_level_outptut_variable;
+            std::unordered_map<std::string, double>& degree_of_truths =
+                output.degree_of_truths;
 
+            _extract_code_lexer_data(
+                input,
+                code_lexer_output
+            );
 
-            std::vector<FuzzyExpertSystemAIVariable> selected_line_count_variables;
-            for (auto& line_count_variable : _line_count_variables)
-            {
-                if (line_count_variable.is_within_bounds(code_lexer_output.line_count))
-                {
-                    selected_line_count_variables.push_back(line_count_variable);
-                }
-            }
+            _evaluate_membership_function(
+                code_lexer_output,
+                selected_line_count_level_input_variables,
+                selected_longest_line_size_level_input_variables
+            );
 
-            std::vector<FuzzyExpertSystemAIVariable> selected_longest_line_size_variables;
-            for (auto& longest_line_size_variable : _longest_line_size_variables)
-            {
-                if (longest_line_size_variable.is_within_bounds(code_lexer_output.longest_line_size))
-                {
-                    selected_longest_line_size_variables.push_back(longest_line_size_variable);
-                }
-            }
+            _evaluate_degree_of_memberships(
+                code_lexer_output,
+                selected_line_count_level_input_variables,
+                selected_longest_line_size_level_input_variables,
+                selected_line_count_level_input_variable_degree_of_memberships,
+                selected_longest_line_size_level_input_variable_degree_of_memberships
+            );
 
-            std::vector<double> selected_line_count_degree_of_membership_results;
-            for (auto& line_count_variable : selected_line_count_variables)
-            {
-                selected_line_count_degree_of_membership_results.push_back(
-                    line_count_variable.calculate_degree_of_membership(
-                        code_lexer_output.line_count
-                    )
-                );
-            }
+            _evaluate_fuzzification_rules(
+                code_lexer_output,
+                selected_line_count_level_input_variables,
+                selected_longest_line_size_level_input_variables,
+                selected_line_count_level_input_variable_degree_of_memberships,
+                selected_longest_line_size_level_input_variable_degree_of_memberships,
+                selected_organized_level_outptut_variables
+            );
 
-            std::vector<double> selected_longest_line_size_degree_of_membership_results;
-            for (auto& longest_line_size_variable : selected_longest_line_size_variables)
-            {
-                selected_longest_line_size_degree_of_membership_results.push_back(
-                    longest_line_size_variable.calculate_degree_of_membership(
-                        code_lexer_output.longest_line_size
-                    )
-                );
-            }
+            _evaluate_defuzzification(
+                selected_organized_level_outptut_variables,
+                defuzzified_organized_level_outptut_results
+            );
 
-            size_t line_count_variable_index,
-                longest_line_size_variable_index,
-                line_count_variable_size = selected_line_count_variables.size(),
-                longest_line_size_variable_size = selected_longest_line_size_variables.size();
-            std::unordered_map<std::string, double> selected_outptut_variables;
-            for (line_count_variable_index = 0;
-                line_count_variable_index < line_count_variable_size;
-                ++line_count_variable_index)
-            {
-                double selected_line_count_degree_of_membership =
-                    selected_line_count_degree_of_membership_results[line_count_variable_index];
-                std::string selected_line_count_name =
-                    selected_line_count_variables[line_count_variable_index].get_name();
-                for (longest_line_size_variable_index = 0;
-                    longest_line_size_variable_index < longest_line_size_variable_size;
-                    ++longest_line_size_variable_index)
-                {
-                    double selected_longest_line_size_degree_of_membership =
-                        selected_longest_line_size_degree_of_membership_results[longest_line_size_variable_index];
-                    std::string selected_longest_line_size_name =
-                        selected_longest_line_size_variables[longest_line_size_variable_index].get_name();
-                    
-                    if (selected_line_count_name == "small" && selected_longest_line_size_name == "short")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("organized"))
-                        {
-                            selected_outptut_variables["organized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["organized"] = std::min(value, selected_outptut_variables["organized"]);
-                        }
-                    }
-                    else if (selected_line_count_name == "small" && selected_longest_line_size_name == "medium")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("organized"))
-                        {
-                            selected_outptut_variables["organized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["organized"] = std::min(value, selected_outptut_variables["organized"]);
-                        }
-                    }
-                    else if (selected_line_count_name == "small" && selected_longest_line_size_name == "long")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("mildly-organized"))
-                        {
-                            selected_outptut_variables["mildly-organized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["mildly-organized"] = std::min(value, selected_outptut_variables["mildly-organized"]);
-                        }
-                    }
-                    else if (selected_line_count_name == "medium" && selected_longest_line_size_name == "short")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("organized"))
-                        {
-                            selected_outptut_variables["organized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["organized"] = std::min(value, selected_outptut_variables["organized"]);
-                        }
-                    }
-                    else if (selected_line_count_name == "medium" && selected_longest_line_size_name == "medium")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("mildly-organized"))
-                        {
-                            selected_outptut_variables["mildly-organized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["mildly-organized"] = std::min(value, selected_outptut_variables["mildly-organized"]);
-                        }
-                    }
-                    else if (selected_line_count_name == "medium" && selected_longest_line_size_name == "long")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("unorganized"))
-                        {
-                            selected_outptut_variables["unorganized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["unorganized"] = std::min(value, selected_outptut_variables["unorganized"]);
-                        }
-                    }
-                    else if (selected_line_count_name == "large" && selected_longest_line_size_name == "short")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("mildly-organized"))
-                        {
-                            selected_outptut_variables["mildly-organized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["mildly-organized"] = std::min(value, selected_outptut_variables["mildly-organized"]);
-                        }
-                    }
-                    else if (selected_line_count_name == "large" && selected_longest_line_size_name == "medium")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("unorganized"))
-                        {
-                            selected_outptut_variables["unorganized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["unorganized"] = std::min(value, selected_outptut_variables["unorganized"]);
-                        }
-                    }
-                    else if (selected_line_count_name == "large" && selected_longest_line_size_name == "long")
-                    {
-                        double value = std::min(selected_line_count_degree_of_membership, selected_longest_line_size_degree_of_membership);
-                        if (!selected_outptut_variables.contains("unorganized"))
-                        {
-                            selected_outptut_variables["unorganized"] = value;
-                        }
-                        else
-                        {
-                            selected_outptut_variables["unorganized"] = std::min(value, selected_outptut_variables["unorganized"]);
-                        }
-                    }
-                }
-            }
+            _evaluate_centroid(
+                centroid,
+                defuzzified_organized_level_outptut_results
+            );
 
-            std::unordered_map<std::string, double> defuzzification_result;
-            for (auto& [key, value] : selected_outptut_variables)
-            {
-                defuzzification_result[key] =
-                    ((_organized_classifications[key].get_maximum() - _organized_classifications[key].get_minimum()) / 2) * ((2 * value) - std::pow(value, 2));
-            }
-
-
-
-            double centroid_x = 0;
-            double centroid_y = 0;
-            for (auto& [key, value] : defuzzification_result)
-            {
-                centroid_x += _organized_classifications[key].get_middle() * value;
-                centroid_y += value;
-            }
-            double centroid = centroid_x / centroid_y;
-
-            double final_value = 0;
-            std::string final_classification = "";
-            std::unordered_map<std::string, double> degree_of_truth_result;
-            for (auto& [key, value] : selected_outptut_variables)
-            {
-                double dom = _organized_classifications[key].calculate_degree_of_membership(centroid);
-                degree_of_truth_result[key] = dom;                
-                if (final_value < dom)
-                {
-                    final_value = dom;
-                    final_classification = key;
-                }
-            }
-
-
-
-            for (auto& line_count_variable : selected_line_count_variables)
-            {
-                std::cout << line_count_variable.get_name() << "\n";
-            }
-            std::cout << "\n";
-            for (auto& longest_line_size_variable : selected_longest_line_size_variables)
-            {
-                std::cout << longest_line_size_variable.get_name() << "\n";
-            }
-            std::cout << "\n";
-            for (auto& value : selected_line_count_degree_of_membership_results)
-            {
-                std::cout << value << "\n";
-            }
-            std::cout << "\n";
-            for (auto& value : selected_longest_line_size_degree_of_membership_results)
-            {
-                std::cout << value << "\n";
-            }
-            std::cout << "\n";
-            for (auto& [key, value] : selected_outptut_variables)
-            {
-                std::cout << key << " : " << value << "\n";
-            }
-            std::cout << "\n";
-            for (auto& [key, value] : defuzzification_result)
-            {
-                std::cout << key << " : " << value << "\n";
-            }
-            std::cout << "\n";
-            for (auto& [key, value] : degree_of_truth_result)
-            {
-                std::cout << key << " : " << value << "\n";
-            }
-            std::cout << "\n";
-
-
-            std::cout << final_value << "\n";
-            std::cout << final_classification << "\n";
-
-
+            _evaluate_final_results(
+                centroid,
+                final_organized_level_outptut_value,
+                final_organized_level_outptut_variable,
+                degree_of_truths,
+                selected_organized_level_outptut_variables
+            );
 
             return output;
         }
@@ -360,6 +144,209 @@ namespace QLogicaeRulexCore
         }
     }
 
+    void FuzzyExpertSystemAI::_extract_code_lexer_data(
+        const FuzzyExpertSystemAIInput& input,
+        CodeLexerOutput& code_lexer_output
+    )
+    {
+        code_lexer_output = CODE_LEXER.evaluate({
+            .text = input.text
+        });
+    }
+
+    void FuzzyExpertSystemAI::_evaluate_membership_function(
+        CodeLexerOutput& code_lexer_output,
+        std::vector<std::string>& selected_line_count_level_input_variables,
+        std::vector<std::string>& selected_longest_line_size_level_input_variables
+    )
+    {
+        for (const auto& [key, value] :
+            _line_count_level_input_variables
+        )
+        {
+            if (CALCULATOR.is_within_bounds(
+                    value,
+                    code_lexer_output.line_count
+                )
+            )
+            {
+                selected_line_count_level_input_variables.push_back(
+                    key
+                );
+            }
+        }
+
+        for (const auto& [key, value] :
+            _longest_line_size_level_input_variables
+        )
+        {
+            if (CALCULATOR.is_within_bounds(
+                    value,
+                    code_lexer_output.longest_line_size
+                )
+            )
+            {
+                selected_longest_line_size_level_input_variables.push_back(
+                    key
+                );
+            }
+        }
+    }
+
+    void FuzzyExpertSystemAI::_evaluate_degree_of_memberships(
+        CodeLexerOutput& code_lexer_output,
+        std::vector<std::string>& selected_line_count_level_input_variables,
+        std::vector<std::string>& selected_longest_line_size_level_input_variables,
+        std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships,
+        std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships
+    )
+    {        
+        for (const auto& line_count_level_input_variable :
+            selected_line_count_level_input_variables)
+        {
+            selected_line_count_level_input_variable_degree_of_memberships.push_back(
+                CALCULATOR.calculate_degree_of_membership(
+                    _line_count_level_input_variables[line_count_level_input_variable],
+                    code_lexer_output.line_count
+                )
+            );
+        }
+
+        for (const auto& longest_line_size_level_input_variable :
+            selected_longest_line_size_level_input_variables)
+        {
+            selected_longest_line_size_level_input_variable_degree_of_memberships.push_back(
+                CALCULATOR.calculate_degree_of_membership(
+                    _longest_line_size_level_input_variables[longest_line_size_level_input_variable],
+                    code_lexer_output.longest_line_size
+                )
+            );
+        }
+    }
+
+    void FuzzyExpertSystemAI::_evaluate_fuzzification_rules(
+        CodeLexerOutput& code_lexer_output,
+        std::vector<std::string>& selected_line_count_level_input_variables,
+        std::vector<std::string>& selected_longest_line_size_level_input_variables,
+        std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships,
+        std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships,
+        std::unordered_map<std::string, double>& selected_organized_level_outptut_variables
+    )
+    {        
+        size_t line_count_level_input_variable_index,
+            longest_line_size_level_input_variable_index,
+            line_count_level_input_variables_size =
+                selected_line_count_level_input_variables.size(),
+            longest_line_size_level_input_variables_size =
+                selected_longest_line_size_level_input_variables.size();
+
+        for (line_count_level_input_variable_index = 0;
+            line_count_level_input_variable_index <
+                line_count_level_input_variables_size;
+            ++line_count_level_input_variable_index)
+        {
+            double selected_line_count_level_input_variable_degree_of_membership =
+                selected_line_count_level_input_variable_degree_of_memberships
+                    [line_count_level_input_variable_index];
+            std::string selected_line_count_level_input_variable_name =
+                selected_line_count_level_input_variables
+                    [line_count_level_input_variable_index];
+            for (longest_line_size_level_input_variable_index = 0;
+                longest_line_size_level_input_variable_index <
+                    longest_line_size_level_input_variables_size;
+                ++longest_line_size_level_input_variable_index)
+            {
+                double selected_longest_line_size_level_input_variable_degree_of_membership =
+                    selected_longest_line_size_level_input_variable_degree_of_memberships
+                        [longest_line_size_level_input_variable_index];
+                double minimum_degree_of_membership = std::min(
+                    selected_line_count_level_input_variable_degree_of_membership,
+                    selected_longest_line_size_level_input_variable_degree_of_membership
+                );
+                std::string selected_longest_line_size_name =
+                    selected_longest_line_size_level_input_variables
+                        [longest_line_size_level_input_variable_index];
+                std::string selected_organized_level_output_variable =
+                    _organization_level_output_variable_fuzzy_ruleset
+                        [selected_line_count_level_input_variable_name]
+                        [selected_longest_line_size_name];
+
+                if (!selected_organized_level_outptut_variables
+                    .contains(
+                        selected_organized_level_output_variable
+                    )
+                )
+                {
+                    selected_organized_level_outptut_variables
+                        [selected_organized_level_output_variable] =
+                            minimum_degree_of_membership;
+                }
+                else
+                {
+                    selected_organized_level_outptut_variables
+                        [selected_organized_level_output_variable] =
+                            std::min(
+                                minimum_degree_of_membership,
+                                selected_organized_level_outptut_variables
+                                    [selected_organized_level_output_variable]
+                            );
+                }
+            }
+        }
+    }
+
+    void FuzzyExpertSystemAI::_evaluate_defuzzification(
+        std::unordered_map<std::string, double>& selected_organized_level_outptut_variables,
+        std::unordered_map<std::string, double>& defuzzified_organized_level_outptut_results
+    )
+    {        
+        for (auto& [key, value] :
+            selected_organized_level_outptut_variables)
+        {
+            defuzzified_organized_level_outptut_results[key] =
+                CALCULATOR.calculate_defuzzification(
+                    _organization_level_output_variables[key],
+                    value
+                );
+        }
+    }
+
+    void FuzzyExpertSystemAI::_evaluate_centroid(
+        double& centroid,
+        std::unordered_map<std::string, double>& defuzzified_organized_level_outptut_results
+    )
+    {           
+        centroid = CALCULATOR.calculate_centroid(
+            _organization_level_output_variables,
+            defuzzified_organized_level_outptut_results
+        );
+    }
+
+    void FuzzyExpertSystemAI::_evaluate_final_results(
+        double& centroid,
+        double& final_organized_level_outptut_value,
+        std::string& final_organized_level_outptut_variable,
+        std::unordered_map<std::string, double>& degree_of_truths,
+        std::unordered_map<std::string, double>& selected_organized_level_outptut_variables
+    )
+    {
+        for (auto& [key, value] :
+            selected_organized_level_outptut_variables)
+        {
+            double degree_of_membership =
+                CALCULATOR.calculate_degree_of_membership(
+                    _organization_level_output_variables[key],
+                    centroid
+                );
+            degree_of_truths[key] = degree_of_membership;
+            if (final_organized_level_outptut_value < degree_of_membership)
+            {
+                final_organized_level_outptut_value = degree_of_membership;
+                final_organized_level_outptut_variable = key;
+            }
+        }
+    }
+
     FuzzyExpertSystemAI& FuzzyExpertSystemAI::get_instance()
     {
         static FuzzyExpertSystemAI instance;
@@ -367,3 +354,57 @@ namespace QLogicaeRulexCore
         return instance;
     }
 }
+
+
+/*
+std::cout << output.code_lexer_output.line_count << "\n";
+std::cout << output.code_lexer_output.longest_line_size << "\n";
+for (const auto& value :
+    output.selected_longest_line_size_level_input_variables)
+{
+    std::cout << value << "\n";
+}
+std::cout << "\n";
+for (const auto& value :
+    output.selected_longest_line_size_level_input_variables)
+{
+    std::cout << value << "\n";
+}
+std::cout << "\n";
+for (const auto& value :
+    output.selected_line_count_level_input_variable_degree_of_memberships)
+{
+    std::cout << value << "\n";
+}
+std::cout << "\n";
+for (const auto& value :
+    output.selected_longest_line_size_level_input_variable_degree_of_memberships)
+{
+    std::cout << value << "\n";
+}
+std::cout << "\n";
+for (auto& [key, value] :
+    output.selected_organized_level_outptut_variables)
+{
+    std::cout << key << " : " << value << "\n";
+}
+std::cout << "\n";
+for (auto& [key, value] :
+    output.defuzzified_organized_level_outptut_results)
+{
+    std::cout << key << " : " << value << "\n";
+}
+std::cout << "\n";
+
+std::cout << output.centroid << "\n";
+std::cout << output.final_organized_level_outptut_value << "\n";
+std::cout << output.final_organized_level_outptut_variable << "\n";
+std::cout << "\n";
+
+for (auto& [key, value] :
+    output.degree_of_truths)
+{
+    std::cout << key << " : " << value << "\n";
+}
+std::cout << "\n";
+*/

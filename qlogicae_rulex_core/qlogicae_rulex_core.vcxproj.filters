@@ -36,6 +36,9 @@
     <ClInclude Include="code_lexer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="calculator.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="application.cpp">
@@ -57,6 +60,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="code_lexer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="calculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,20 +1,9 @@
 #pragma once
 
+#include "utilities.hpp"
+
 namespace QLogicaeRulexCore
-{
-    struct CodeLexerInput
-    {
-        std::string text = "";
-    };
-
-    struct CodeLexerOutput
-    {
-        bool is_successful = true;
-        std::string message = "";
-        double line_count = 0;
-        double longest_line_size = 0;
-    };
-
+{    
     class CodeLexer
     {
     public:
@@ -24,10 +13,15 @@ namespace QLogicaeRulexCore
 
     private:
         CodeLexer();
+
         ~CodeLexer() = default;
+
         CodeLexer(const CodeLexer&) = delete;
+
         CodeLexer(CodeLexer&&) noexcept = delete;
+
         CodeLexer& operator = (CodeLexer&&) = delete;
+
         CodeLexer& operator = (const CodeLexer&) = delete;
     };
 

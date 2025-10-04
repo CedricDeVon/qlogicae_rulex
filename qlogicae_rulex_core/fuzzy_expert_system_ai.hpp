@@ -1,91 +1,11 @@
 #pragma once
 
+#include "utilities.hpp"
 #include "code_lexer.hpp"
+#include "calculator.hpp"
 
 namespace QLogicaeRulexCore
-{
-    enum class LineCountLevel : uint8_t
-    {
-        SMALL,
-        MEDIUM,
-        LARGE
-    };
-
-    enum class LongestLineSizeLevel : uint8_t
-    {
-        SHORT,
-        MEDIUM,
-        LONG
-    };
-
-    enum class OrganizedLevel : uint8_t
-    {
-        ORGANIZED,
-        MILDLY_ORGANIZED,
-        UNORGANIZED
-    };
-
-    struct FuzzyExpertSystemAIInput
-    {
-        std::string text = "";
-    };
-
-    struct FuzzyExpertSystemAIOutput
-    {
-        bool is_successful = true;
-        std::string message = "";
-    };
-
-    class FuzzyExpertSystemAIVariable
-    {
-    public:
-        FuzzyExpertSystemAIVariable(
-            const double& minimum,
-            const double& middle,
-            const double& maximum,
-            const std::string& name = ""
-        );
-        FuzzyExpertSystemAIVariable() = default;
-        ~FuzzyExpertSystemAIVariable() = default;
-
-        double get_middle();
-        double get_minimum();
-        double get_maximum();
-        std::string get_name();
-        bool is_within_bounds(const double& value);
-        double calculate_degree_of_membership(const double& value);
-
-    protected:
-        std::string _name;
-        double _minimum;
-        double _middle;
-        double _maximum;
-    };
-
-    class FuzzyExpertSystemAIRuleEvaluation
-    {
-    public:
-        FuzzyExpertSystemAIRuleEvaluation(
-            const FuzzyExpertSystemAIVariable& line_count_variable,
-            const FuzzyExpertSystemAIVariable& longest_line_size_variable,
-            const FuzzyExpertSystemAIVariable& organized_classification
-        );
-        FuzzyExpertSystemAIRuleEvaluation() = default;
-        ~FuzzyExpertSystemAIRuleEvaluation() = default;
-
-        FuzzyExpertSystemAIVariable get_line_count_variable();
-        FuzzyExpertSystemAIVariable get_longest_line_size_variable();
-        FuzzyExpertSystemAIVariable get_organized_classification();
-        bool is_within_bounds(const double& value);
-        double calculate_degree_of_membership(const double& value);
-
-    protected:
-        FuzzyExpertSystemAIVariable _line_count_variable;
-        FuzzyExpertSystemAIVariable _longest_line_size_variable;
-        FuzzyExpertSystemAIVariable _organized_classification;
-    };
-
-
+{    
     class FuzzyExpertSystemAI
     {
     public:
@@ -95,15 +15,70 @@ namespace QLogicaeRulexCore
 
     protected:
         FuzzyExpertSystemAI();
+        
         ~FuzzyExpertSystemAI() = default;
+        
         FuzzyExpertSystemAI(const FuzzyExpertSystemAI&) = delete;
+        
         FuzzyExpertSystemAI(FuzzyExpertSystemAI&&) noexcept = delete;
+        
         FuzzyExpertSystemAI& operator = (FuzzyExpertSystemAI&&) = delete;
+        
         FuzzyExpertSystemAI& operator = (const FuzzyExpertSystemAI&) = delete;
 
-        std::vector<FuzzyExpertSystemAIVariable> _line_count_variables;
-        std::vector<FuzzyExpertSystemAIVariable> _longest_line_size_variables;
-        std::unordered_map<std::string, FuzzyExpertSystemAIVariable> _organized_classifications;
+        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _line_count_level_input_variables;
+
+        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _longest_line_size_level_input_variables;
+
+        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _organization_level_output_variables;
+
+        std::unordered_map<std::string, std::unordered_map<std::string, std::string>> _organization_level_output_variable_fuzzy_ruleset;
+    
+        void _extract_code_lexer_data(
+            const FuzzyExpertSystemAIInput& input,
+            CodeLexerOutput& code_lexer_output
+        );
+
+        void _evaluate_membership_function(
+            CodeLexerOutput& code_lexer_output,
+            std::vector<std::string>& selected_line_count_level_input_variables,
+            std::vector<std::string>& selected_longest_line_size_level_input_variables
+        );
+
+        void _evaluate_degree_of_memberships(
+            CodeLexerOutput& code_lexer_output,
+            std::vector<std::string>& selected_line_count_level_input_variables,
+            std::vector<std::string>& selected_longest_line_size_level_input_variables,
+            std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships,
+            std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships
+        );
+
+        void _evaluate_fuzzification_rules(
+            CodeLexerOutput& code_lexer_output,
+            std::vector<std::string>& selected_line_count_level_input_variables,
+            std::vector<std::string>& selected_longest_line_size_level_input_variables,
+            std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships,
+            std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships,
+            std::unordered_map<std::string, double>& selected_organized_level_outptut_variables
+        );
+
+        void _evaluate_defuzzification(
+            std::unordered_map<std::string, double>& selected_organized_level_outptut_variables,
+            std::unordered_map<std::string, double>& defuzzified_organized_level_outptut_results
+        );
+
+        void _evaluate_centroid(
+            double& centroid,
+            std::unordered_map<std::string, double>& defuzzified_organized_level_outptut_results
+        );
+
+        void _evaluate_final_results(
+            double& centroid,
+            double& final_organized_level_outptut_value,
+            std::string& final_organized_level_outptut_variable,
+            std::unordered_map<std::string, double>& degree_of_truths,
+            std::unordered_map<std::string, double>& selected_organized_level_outptut_variables
+        );
     };
 
     inline static FuzzyExpertSystemAI& FUZZY_EXPERT_SYSTEM_AI =
