@@ -90,6 +90,41 @@ namespace QLogicaeRulexCore
         const std::string APPLICATION_LOGO =
             ":/Application/qlogicae/application/assets/application.ico";
 
+        const std::string APPLICATION_DEFAULT_QT_FONT_REFERENCE =
+            ":/Application/qlogicae/application/assets/fonts/Inter/static/Inter_18pt-Regular.ttf";
+
+        const std::string APPLICATION_DEFAULT_QWIDGET_STYLE =
+            R"(
+                QWidget {
+                    font-family: "%1";
+                }
+            )";
+
+        const std::string APPLICATION_QPUSH_BUTTON_ACTIVE_STYLE =
+            "QPushButton {"
+            "background: #3574F0;"
+            "border: 2px solid transparent;"
+            "border-radius: 4px;"
+            "}"
+            "QPushButton:hover {"
+            "background: #366ACF;"
+            "}"
+            "QPushButton:pressed {"
+            "	background: #375FAD;"
+            "}";
+
+        const std::string APPLICATION_QPUSH_BUTTON_INACTIVE_STYLE =
+            "QPushButton {"
+            "background: #2B2D30;"
+            "border-radius: 4px;"
+            "}"
+            "QPushButton:hover {"
+            "background: #4E5157;"
+            "}"
+            "QPushButton:pressed {"
+            "background: #2B2D30;"
+            "}";
+
         const std::unordered_map<FuzzyExpertSystemAILineCounLevelVariable, std::string> FUZZY_EXPERT_SYSTEM_AI_LINE_COUNT_LEVEL_VARIABLE_ENUMS =
         {
             { FuzzyExpertSystemAILineCounLevelVariable::SMALL, "small" },

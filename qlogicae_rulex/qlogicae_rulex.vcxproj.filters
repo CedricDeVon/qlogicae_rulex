@@ -249,7 +249,7 @@
     <QtMoc Include="mainmenu.hpp">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="evaluation.h">
+    <QtMoc Include="evaluation.hpp">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="about.hpp">

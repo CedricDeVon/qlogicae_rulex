@@ -17,26 +17,20 @@
    <iconset resource="application.qrc">
     <normaloff>:/Application/qlogicae/application/assets/application.ico</normaloff>:/Application/qlogicae/application/assets/application.ico</iconset>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>600</width>
-     <height>21</height>
-    </rect>
-   </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <widget class="QWidget" name="splash"/>
+      <widget class="QWidget" name="mainmenu"/>
+      <widget class="QWidget" name="evaluation"/>
+      <widget class="QWidget" name="about"/>
+      <widget class="QWidget" name="settings"/>
+      <widget class="QWidget" name="loading"/>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

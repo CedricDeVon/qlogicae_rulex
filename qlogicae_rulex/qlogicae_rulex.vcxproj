@@ -182,7 +182,7 @@ xcopy "C:\Qt\6.9.1\msvc2022_64\plugins\platforms\qwindows.dll" "$(OutDir)platfor
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="main.cpp" />
     <QtMoc Include="loading.hpp" />
-    <QtMoc Include="evaluation.h" />
+    <QtMoc Include="evaluation.hpp" />
     <QtMoc Include="about.hpp" />
     <ClInclude Include="main.hpp" />
     <QtMoc Include="mainmenu.hpp" />

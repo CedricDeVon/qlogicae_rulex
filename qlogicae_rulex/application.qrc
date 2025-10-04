@@ -58,5 +58,7 @@
         <file>qlogicae/application/assets/fonts/Inter/static/Inter_28pt-Thin.ttf</file>
         <file>qlogicae/application/assets/fonts/Inter/static/Inter_28pt-ThinItalic.ttf</file>
         <file>qlogicae/application/assets/application.ico</file>
+        <file>qlogicae/application/assets/application.png</file>
+        <file>qlogicae/application/assets/qt.png</file>
     </qresource>
 </RCC>
