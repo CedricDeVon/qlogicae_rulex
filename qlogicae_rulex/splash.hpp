@@ -1,17 +1,18 @@
 #pragma once
 
-#include <QWidget>
 #include "ui_splash.h"
 
-class Splash : public QWidget
+namespace QLogicaeRulex
 {
-	Q_OBJECT
+	class Splash : public QWidget
+	{
+		Q_OBJECT
 
-public:
-	Splash(QWidget *parent = nullptr);
-	~Splash();
+	public:
+		explicit Splash(QWidget* parent = nullptr);
+		~Splash();
 
-private:
-	Ui::SplashClass ui;
-};
-
+	private:
+		Ui::SplashClass _ui;
+	};
+}

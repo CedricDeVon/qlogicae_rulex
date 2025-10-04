@@ -1,12 +1,17 @@
 #include "stdafx.h"
+
 #include "mainmenu.hpp"
 
-MainMenu::MainMenu(QWidget *parent)
-	: QWidget(parent)
+namespace QLogicaeRulex
 {
-	ui.setupUi(this);
+	MainMenu::MainMenu(QWidget* parent)
+		: QWidget(parent)
+	{
+		_ui.setupUi(this);
+	}
+
+	MainMenu::~MainMenu()
+	{
+
+	}
 }
-
-MainMenu::~MainMenu()
-{}
-

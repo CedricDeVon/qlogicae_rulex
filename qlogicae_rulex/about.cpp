@@ -1,12 +1,17 @@
 #include "stdafx.h"
+
 #include "about.h"
 
-About::About(QWidget *parent)
-	: QWidget(parent)
+namespace QLogicaeRulex
 {
-	ui.setupUi(this);
+	About::About(QWidget* parent)
+		: QWidget(parent)
+	{
+		_ui.setupUi(this);
+	}
+
+	About::~About()
+	{
+
+	}
 }
-
-About::~About()
-{}
-

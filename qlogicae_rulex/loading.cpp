@@ -1,12 +1,16 @@
 #include "stdafx.h"
+
 #include "loading.hpp"
 
-Loading::Loading(QWidget *parent)
-	: QWidget(parent)
+namespace QLogicaeRulex
 {
-	ui.setupUi(this);
+	Loading::Loading(QWidget* parent)
+		: QWidget(parent)
+	{
+		_ui.setupUi(this);
+	}
+
+	Loading::~Loading()
+	{
+	}
 }
-
-Loading::~Loading()
-{}
-

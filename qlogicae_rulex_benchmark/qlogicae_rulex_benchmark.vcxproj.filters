@@ -49,4 +49,7 @@
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="qlogicae\.qlogicae\plotica\Fuzzy Expert System AI\configurations.json" />
+  </ItemGroup>
 </Project>

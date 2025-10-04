@@ -188,7 +188,7 @@ xcopy "C:\Qt\6.9.1\msvc2022_64\plugins\platforms\qwindows.dll" "$(OutDir)platfor
     <QtMoc Include="mainmenu.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resource1.h" />
-    <ClInclude Include="splash.hpp" />
+    <QtMoc Include="splash.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="splash.cpp" />

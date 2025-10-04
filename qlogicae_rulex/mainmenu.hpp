@@ -1,17 +1,18 @@
 #pragma once
 
-#include <QWidget>
 #include "ui_mainmenu.h"
 
-class MainMenu : public QWidget
+namespace QLogicaeRulex
 {
-	Q_OBJECT
+	class MainMenu : public QWidget
+	{
+		Q_OBJECT
 
-public:
-	MainMenu(QWidget *parent = nullptr);
-	~MainMenu();
+	public:
+		explicit MainMenu(QWidget* parent = nullptr);
+		~MainMenu();
 
-private:
-	Ui::MainMenuClass ui;
-};
-
+	private:
+		Ui::MainMenuClass _ui;
+	};
+}

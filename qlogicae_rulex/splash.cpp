@@ -1,12 +1,16 @@
 #include "stdafx.h"
 #include "splash.hpp"
 
-Splash::Splash(QWidget *parent)
-	: QWidget(parent)
+namespace QLogicaeRulex
 {
-	ui.setupUi(this);
+	Splash::Splash(QWidget* parent)
+		: QWidget(parent)
+	{
+		_ui.setupUi(this);
+	}
+
+	Splash::~Splash()
+	{
+
+	}
 }
-
-Splash::~Splash()
-{}
-

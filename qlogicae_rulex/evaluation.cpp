@@ -1,12 +1,17 @@
 #include "stdafx.h"
+
 #include "evaluation.h"
 
-Evaluation::Evaluation(QWidget *parent)
-	: QWidget(parent)
+namespace QLogicaeRulex
 {
-	ui.setupUi(this);
+	Evaluation::Evaluation(QWidget* parent)
+		: QWidget(parent)
+	{
+		_ui.setupUi(this);
+	}
+
+	Evaluation::~Evaluation()
+	{
+
+	}
 }
-
-Evaluation::~Evaluation()
-{}
-

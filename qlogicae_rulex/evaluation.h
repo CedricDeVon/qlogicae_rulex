@@ -1,17 +1,18 @@
 #pragma once
 
-#include <QWidget>
 #include "ui_evaluation.h"
 
-class Evaluation : public QWidget
+namespace QLogicaeRulex
 {
-	Q_OBJECT
+	class Evaluation : public QWidget
+	{
+		Q_OBJECT
 
-public:
-	Evaluation(QWidget *parent = nullptr);
-	~Evaluation();
+	public:
+		explicit Evaluation(QWidget* parent = nullptr);
+		~Evaluation();
 
-private:
-	Ui::EvaluationClass ui;
-};
-
+	private:
+		Ui::EvaluationClass _ui;
+	};
+}

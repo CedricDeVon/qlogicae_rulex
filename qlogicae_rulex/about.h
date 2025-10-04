@@ -1,17 +1,18 @@
 #pragma once
 
-#include <QWidget>
 #include "ui_about.h"
 
-class About : public QWidget
+namespace QLogicaeRulex
 {
-	Q_OBJECT
+	class About : public QWidget
+	{
+		Q_OBJECT
 
-public:
-	About(QWidget *parent = nullptr);
-	~About();
+	public:
+		explicit About(QWidget* parent = nullptr);
+		~About();
 
-private:
-	Ui::AboutClass ui;
-};
-
+	private:
+		Ui::AboutClass _ui;
+	};
+}
