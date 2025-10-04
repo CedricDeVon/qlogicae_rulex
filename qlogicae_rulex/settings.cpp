@@ -1,16 +1,16 @@
 #include "stdafx.h"
 
-#include "about.hpp"
+#include "settings.hpp"
 
 namespace QLogicaeRulex
 {
-	About::About(QWidget* parent)
+	Settings::Settings(QWidget* parent)
 		: QWidget(parent)
 	{
 		_ui.setupUi(this);
 	}
 
-	About::~About()
+	Settings::~Settings()
 	{
 
 	}
