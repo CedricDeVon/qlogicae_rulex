@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>846</width>
+    <height>609</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -427,6 +427,12 @@ QPushButton:pressed {
       </item>
       <item>
        <widget class="QWidget" name="horizontalWidget_10" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
@@ -449,8 +455,14 @@ QPushButton:pressed {
          <property name="bottomMargin">
           <number>24</number>
          </property>
-         <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
+         <item>
           <widget class="QStackedWidget" name="stackedWidget">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -459,8 +471,8 @@ QPushButton:pressed {
            </property>
            <property name="maximumSize">
             <size>
-             <width>550</width>
-             <height>800</height>
+             <width>16777215</width>
+             <height>16777215</height>
             </size>
            </property>
            <property name="autoFillBackground">
@@ -470,7 +482,7 @@ QPushButton:pressed {
             <enum>QFrame::Shape::NoFrame</enum>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>1</number>
            </property>
            <widget class="QWidget" name="page"/>
            <widget class="QWidget" name="page_2"/>

@@ -110,7 +110,7 @@
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: #EBECF0</string>
+            <string notr="true">color: #EBECF0;</string>
            </property>
            <property name="text">
             <string>About</string>
@@ -235,7 +235,7 @@
                   </font>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">color: #9DA0A8</string>
+                  <string notr="true">color: #9DA0A8;</string>
                  </property>
                  <property name="text">
                   <string>Version</string>

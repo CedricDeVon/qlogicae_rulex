@@ -2,6 +2,11 @@
 
 #include "ui_evaluation.h"
 
+namespace Ui
+{
+	class EvaluationClass;
+}
+
 namespace QLogicaeRulex
 {
 	class Evaluation : public QWidget
@@ -12,7 +17,11 @@ namespace QLogicaeRulex
 		explicit Evaluation(QWidget* parent = nullptr);
 		~Evaluation();
 
+	protected:
+		void showEvent(QShowEvent* event) override;
+
 	private:
-		Ui::EvaluationClass _ui;
+		Ui::EvaluationClass* _ui;
 	};
 }
+

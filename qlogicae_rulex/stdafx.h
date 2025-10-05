@@ -17,3 +17,5 @@
 #include <QtWidgets/QMainWindow>
 #include <QGraphicsOpacityEffect>
 #include <QParallelAnimationGroup>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
