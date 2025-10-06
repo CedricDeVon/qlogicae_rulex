@@ -130,6 +130,9 @@ xcopy "C:\Qt\6.9.1\msvc2022_64\plugins\platforms\qwindowsd.dll" "$(OutDir)platfo
       <Command>xcopy "C:\Qt\6.9.1\msvc2022_64\bin\Qt6Core.dll" "$(OutDir)" /Y /F
 xcopy "C:\Qt\6.9.1\msvc2022_64\bin\Qt6Gui.dll" "$(OutDir)" /Y /F
 xcopy "C:\Qt\6.9.1\msvc2022_64\bin\Qt6Widgets.dll" "$(OutDir)" /Y /F
+xcopy "C:\Qt\6.9.1\msvc2022_64\bin\Qt6Charts.dll" "$(OutDir)" /Y /F
+xcopy "C:\Qt\6.9.1\msvc2022_64\bin\Qt6OpenGL.dll" "$(OutDir)" /Y /F
+xcopy "C:\Qt\6.9.1\msvc2022_64\bin\Qt6OpenGLWidgets.dll" "$(OutDir)" /Y /F
 xcopy "C:\Qt\6.9.1\msvc2022_64\plugins\platforms\qwindows.dll" "$(OutDir)platforms\" /Y /F</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

@@ -2,11 +2,14 @@
 <ui version="4.0">
  <class>EvaluationClass</class>
  <widget class="QWidget" name="EvaluationClass">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1016</width>
+    <width>4095</width>
     <height>703</height>
    </rect>
   </property>
@@ -24,6 +27,12 @@
   </property>
   <property name="windowTitle">
    <string>Evaluation</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -140,6 +149,21 @@
          <string notr="true">background-color: #1E1F22</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_6">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
           <widget class="QWidget" name="verticalWidget" native="true">
            <property name="sizePolicy">
@@ -164,8 +188,20 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <item>
+            <item alignment="Qt::AlignmentFlag::AlignLeft">
              <widget class="QWidget" name="verticalWidget" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>100</height>
+               </size>
+              </property>
               <layout class="QVBoxLayout" name="verticalLayout_3">
                <property name="spacing">
                 <number>0</number>
@@ -198,51 +234,77 @@
                  </property>
                 </widget>
                </item>
-               <item>
-                <widget class="QLabel" name="label_15">
+               <item alignment="Qt::AlignmentFlag::AlignLeft">
+                <widget class="QWidget" name="horizontalWidget" native="true">
                  <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>128</width>
-                   <height>16</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>8</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel {
-    color: #EBECF0;
-	background: #3574F0;
-    padding-bottom: 2px;
-    border-radius: 4px;
-}</string>
-                 </property>
-                 <property name="lineWidth">
-                  <number>0</number>
-                 </property>
-                 <property name="text">
-                  <string>Code Organization</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                 </property>
-                 <property name="indent">
-                  <number>0</number>
-                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_23">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="label_15">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>8</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel {
+    color: #9DA0A8;
+    padding: 2px 8px 2px 0;
+}
+</string>
+                    </property>
+                    <property name="lineWidth">
+                     <number>0</number>
+                    </property>
+                    <property name="text">
+                     <string>No File Selected</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                    <property name="indent">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </item>
                <item>
@@ -263,6 +325,12 @@
             </item>
             <item>
              <widget class="QWidget" name="verticalWidget" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -331,7 +399,7 @@ QPushButton:pressed {
 </string>
                  </property>
                  <property name="text">
-                  <string>Select File</string>
+                  <string>Start</string>
                  </property>
                  <property name="autoDefault">
                   <bool>false</bool>
@@ -358,7 +426,7 @@ QPushButton:pressed {
               <property name="minimumSize">
                <size>
                 <width>800</width>
-                <height>400</height>
+                <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -391,7 +459,7 @@ QPushButton:pressed {
                  <property name="minimumSize">
                   <size>
                    <width>790</width>
-                   <height>400</height>
+                   <height>440</height>
                   </size>
                  </property>
                  <property name="maximumSize">
@@ -464,9 +532,9 @@ QScrollBar::sub-page:vertical {
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>-580</y>
+                    <y>0</y>
                     <width>790</width>
-                    <height>980</height>
+                    <height>1044</height>
                    </rect>
                   </property>
                   <property name="sizePolicy">
@@ -519,7 +587,7 @@ QScrollBar::sub-page:vertical {
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_12">
                       <property name="spacing">
-                       <number>0</number>
+                       <number>16</number>
                       </property>
                       <property name="leftMargin">
                        <number>0</number>
@@ -544,12 +612,12 @@ QScrollBar::sub-page:vertical {
                         <property name="minimumSize">
                          <size>
                           <width>790</width>
-                          <height>80</height>
+                          <height>0</height>
                          </size>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_7">
                          <property name="spacing">
-                          <number>0</number>
+                          <number>8</number>
                          </property>
                          <property name="leftMargin">
                           <number>0</number>
@@ -563,7 +631,7 @@ QScrollBar::sub-page:vertical {
                          <property name="bottomMargin">
                           <number>0</number>
                          </property>
-                         <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
+                         <item>
                           <widget class="QLabel" name="label_2">
                            <property name="font">
                             <font>
@@ -580,7 +648,7 @@ QScrollBar::sub-page:vertical {
                           </widget>
                          </item>
                          <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
-                          <widget class="QWidget" name="horizontalWidget_7" native="true">
+                          <widget class="QWidget" name="horizontalWidget_22" native="true">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                              <horstretch>0</horstretch>
@@ -590,7 +658,7 @@ QScrollBar::sub-page:vertical {
                            <property name="minimumSize">
                             <size>
                              <width>0</width>
-                             <height>24</height>
+                             <height>0</height>
                             </size>
                            </property>
                            <property name="maximumSize">
@@ -601,7 +669,7 @@ QScrollBar::sub-page:vertical {
                            </property>
                            <layout class="QHBoxLayout" name="horizontalLayout_5">
                             <property name="spacing">
-                             <number>8</number>
+                             <number>4</number>
                             </property>
                             <property name="leftMargin">
                              <number>0</number>
@@ -616,7 +684,7 @@ QScrollBar::sub-page:vertical {
                              <number>0</number>
                             </property>
                             <item>
-                             <widget class="QLabel" name="label_16">
+                             <widget class="QLabel" name="label_22">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                                 <horstretch>0</horstretch>
@@ -626,7 +694,7 @@ QScrollBar::sub-page:vertical {
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
-                                <height>20</height>
+                                <height>0</height>
                                </size>
                               </property>
                               <property name="maximumSize">
@@ -642,11 +710,10 @@ QScrollBar::sub-page:vertical {
                               </property>
                               <property name="styleSheet">
                                <string notr="true">QLabel {
-    color: #EBECF0;
-	background: #3574F0;
-    padding: 2px 8px;
-    border-radius: 4px;
-}</string>
+    color: #9DA0A8;
+    padding: 2px 8px 2px 0;
+}
+</string>
                               </property>
                               <property name="lineWidth">
                                <number>0</number>
@@ -663,7 +730,7 @@ QScrollBar::sub-page:vertical {
                              </widget>
                             </item>
                             <item>
-                             <widget class="QLabel" name="label_18">
+                             <widget class="QLabel" name="label_31">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                                 <horstretch>0</horstretch>
@@ -673,7 +740,7 @@ QScrollBar::sub-page:vertical {
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
-                                <height>20</height>
+                                <height>0</height>
                                </size>
                               </property>
                               <property name="maximumSize">
@@ -694,6 +761,138 @@ QScrollBar::sub-page:vertical {
     padding: 2px 8px;
     border-radius: 4px;
 }</string>
+                              </property>
+                              <property name="lineWidth">
+                               <number>0</number>
+                              </property>
+                              <property name="text">
+                               <string>Level</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="indent">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_30">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>16</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>8</pointsize>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QLabel {
+    color: #EBECF0;
+	background: #3574F0;
+    padding: 2px 8px;
+    border-radius: 4px;
+}</string>
+                              </property>
+                              <property name="lineWidth">
+                               <number>0</number>
+                              </property>
+                              <property name="text">
+                               <string>Value</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="indent">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
+                          <widget class="QWidget" name="horizontalWidget_23" native="true">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_24">
+                            <property name="spacing">
+                             <number>4</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="label_32">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>16</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>8</pointsize>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QLabel {
+    color: #9DA0A8;
+    padding: 2px 8px 2px 0;
+}
+</string>
                               </property>
                               <property name="lineWidth">
                                <number>0</number>
@@ -710,7 +909,7 @@ QScrollBar::sub-page:vertical {
                              </widget>
                             </item>
                             <item>
-                             <widget class="QLabel" name="label_17">
+                             <widget class="QLabel" name="label_34">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                                 <horstretch>0</horstretch>
@@ -720,7 +919,7 @@ QScrollBar::sub-page:vertical {
                               <property name="minimumSize">
                                <size>
                                 <width>0</width>
-                                <height>20</height>
+                                <height>0</height>
                                </size>
                               </property>
                               <property name="maximumSize">
@@ -746,7 +945,233 @@ QScrollBar::sub-page:vertical {
                                <number>0</number>
                               </property>
                               <property name="text">
+                               <string>Level</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="indent">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_33">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>16</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>8</pointsize>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QLabel {
+    color: #EBECF0;
+	background: #3574F0;
+    padding: 2px 8px;
+    border-radius: 4px;
+}</string>
+                              </property>
+                              <property name="lineWidth">
+                               <number>0</number>
+                              </property>
+                              <property name="text">
+                               <string>Value</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="indent">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
+                          <widget class="QWidget" name="horizontalWidget_7" native="true">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_25">
+                            <property name="spacing">
+                             <number>4</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="label_17">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>16</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>8</pointsize>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QLabel {
+    color: #9DA0A8;
+    padding: 2px 8px 2px 0;
+}
+</string>
+                              </property>
+                              <property name="lineWidth">
+                               <number>0</number>
+                              </property>
+                              <property name="text">
                                <string>Organization </string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="indent">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_35">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>16</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>8</pointsize>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QLabel {
+    color: #EBECF0;
+	background: #3574F0;
+    padding: 2px 8px;
+    border-radius: 4px;
+}</string>
+                              </property>
+                              <property name="lineWidth">
+                               <number>0</number>
+                              </property>
+                              <property name="text">
+                               <string>Level</string>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignmentFlag::AlignCenter</set>
+                              </property>
+                              <property name="indent">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_16">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>16</height>
+                               </size>
+                              </property>
+                              <property name="font">
+                               <font>
+                                <pointsize>8</pointsize>
+                               </font>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QLabel {
+    color: #EBECF0;
+	background: #3574F0;
+    padding: 2px 8px;
+    border-radius: 4px;
+}</string>
+                              </property>
+                              <property name="lineWidth">
+                               <number>0</number>
+                              </property>
+                              <property name="text">
+                               <string>Value</string>
                               </property>
                               <property name="alignment">
                                <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -773,7 +1198,7 @@ QScrollBar::sub-page:vertical {
                         <property name="minimumSize">
                          <size>
                           <width>790</width>
-                          <height>300</height>
+                          <height>0</height>
                          </size>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -819,7 +1244,7 @@ QScrollBar::sub-page:vertical {
                            <property name="minimumSize">
                             <size>
                              <width>790</width>
-                             <height>250</height>
+                             <height>260</height>
                             </size>
                            </property>
                            <property name="maximumSize">
@@ -913,7 +1338,7 @@ QScrollBar::sub-page:vertical {
                            <property name="minimumSize">
                             <size>
                              <width>790</width>
-                             <height>250</height>
+                             <height>260</height>
                             </size>
                            </property>
                            <property name="maximumSize">
@@ -1001,7 +1426,7 @@ QScrollBar::sub-page:vertical {
                            <property name="minimumSize">
                             <size>
                              <width>790</width>
-                             <height>250</height>
+                             <height>260</height>
                             </size>
                            </property>
                            <property name="maximumSize">
@@ -1107,6 +1532,11 @@ QScrollBar::sub-page:vertical {
                                      </property>
                                      <item alignment="Qt::AlignmentFlag::AlignLeft">
                                       <widget class="QLabel" name="label_9">
+                                       <property name="styleSheet">
+                                        <string notr="true">QLabel {
+	color: #9DA0A8;
+}</string>
+                                       </property>
                                        <property name="text">
                                         <string>Line Count</string>
                                        </property>
@@ -1203,6 +1633,11 @@ QScrollBar::sub-page:vertical {
                                      </property>
                                      <item>
                                       <widget class="QLabel" name="label_10">
+                                       <property name="styleSheet">
+                                        <string notr="true">QLabel {
+	color: #9DA0A8;
+}</string>
+                                       </property>
                                        <property name="text">
                                         <string>Longest Line Size</string>
                                        </property>
@@ -1299,6 +1734,11 @@ QScrollBar::sub-page:vertical {
                                      </property>
                                      <item>
                                       <widget class="QLabel" name="label_11">
+                                       <property name="styleSheet">
+                                        <string notr="true">QLabel {
+	color: #9DA0A8;
+}</string>
+                                       </property>
                                        <property name="text">
                                         <string>Degree of Memberships</string>
                                        </property>
@@ -1450,6 +1890,11 @@ QScrollBar::sub-page:vertical {
                                      </property>
                                      <item>
                                       <widget class="QLabel" name="label_12">
+                                       <property name="styleSheet">
+                                        <string notr="true">QLabel {
+	color: #9DA0A8;
+}</string>
+                                       </property>
                                        <property name="text">
                                         <string>Areas</string>
                                        </property>
@@ -1546,6 +1991,11 @@ QScrollBar::sub-page:vertical {
                                      </property>
                                      <item>
                                       <widget class="QLabel" name="label_13">
+                                       <property name="styleSheet">
+                                        <string notr="true">QLabel {
+	color: #9DA0A8;
+}</string>
+                                       </property>
                                        <property name="text">
                                         <string>Centroid</string>
                                        </property>
@@ -1642,6 +2092,11 @@ QScrollBar::sub-page:vertical {
                                      </property>
                                      <item>
                                       <widget class="QLabel" name="label_14">
+                                       <property name="styleSheet">
+                                        <string notr="true">QLabel {
+	color: #9DA0A8;
+}</string>
+                                       </property>
                                        <property name="text">
                                         <string>Degree of Truths</string>
                                        </property>
@@ -1738,6 +2193,11 @@ QScrollBar::sub-page:vertical {
                                      </property>
                                      <item>
                                       <widget class="QLabel" name="label_24">
+                                       <property name="styleSheet">
+                                        <string notr="true">QLabel {
+	color: #9DA0A8;
+}</string>
+                                       </property>
                                        <property name="text">
                                         <string>Final Results</string>
                                        </property>

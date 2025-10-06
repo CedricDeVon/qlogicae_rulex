@@ -10,7 +10,7 @@ namespace QLogicaeRulexCore
         {
             { "small", { 0, 50, 110 } },
             { "medium", { 90, 200, 410 } },
-            { "large", { 390, 800, 1610 } }
+            { "large", { 390, 1000, 1610 } }
         };
 
         _longest_line_size_level_input_variables =

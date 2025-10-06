@@ -10,31 +10,38 @@ namespace QLogicaeRulex
 	{
 		_ui->setupUi(this);
 
+        _setup_widgets();
+	}
+
+    void Evaluation::_setup_widgets()
+    {
+
+        _ui->verticalWidget_2->hide();
+        _ui->verticalWidget_2->setVisible(false);
+
         QLineSeries* series_1_1 = new QLineSeries();
-        series_1_1->append(0, 1);
+        series_1_1->append(0, 0);
         series_1_1->append(50, 1);
         series_1_1->append(110, 0);
         series_1_1->setPen(QPen(QColor(0, 200, 0), 2));
 
         QLineSeries* series_1_2 = new QLineSeries();
         series_1_2->append(90, 0);
-        series_1_2->append(130, 1);
-        series_1_2->append(370, 1);
+        series_1_2->append(200, 1);
         series_1_2->append(410, 0);
-        series_1_2->setPen(QPen(QColor(0, 210, 0), 2));
+        series_1_2->setPen(QPen(QColor(0, 0, 200), 2));
 
         QLineSeries* series_1_3 = new QLineSeries();
         series_1_3->append(390, 0);
-        series_1_3->append(440, 1);
-        series_1_3->append(1570, 1);
+        series_1_3->append(1000, 1);
         series_1_3->append(1610, 0);
-        series_1_3->setPen(QPen(QColor(0, 220, 0), 2));
+        series_1_3->setPen(QPen(QColor(200, 0, 0), 2));
 
 
         QLineSeries* vLine_1 = new QLineSeries();
-        vLine_1->append(5, 0);  
-        vLine_1->append(5, 1); 
-        QPen vPen_1(Qt::red);
+        vLine_1->append(5, 0);
+        vLine_1->append(5, 1);
+        QPen vPen_1(Qt::yellow);
         vPen_1.setStyle(Qt::SolidLine);
         vPen_1.setWidth(2);
         vLine_1->setPen(vPen_1);
@@ -68,26 +75,37 @@ namespace QLogicaeRulex
 
 
 
-        QLineSeries* series_2 = new QLineSeries();
-        series_2->append(0, 6);
-        series_2->append(2, 4);
-        series_2->append(3, 8);
-        series_2->append(7, 4);
-        series_2->append(10, 5);
+        QLineSeries* series_2_1 = new QLineSeries();
+        series_2_1->append(0, 0);
+        series_2_1->append(10, 1);
+        series_2_1->append(21, 0);
+        series_2_1->setPen(QPen(QColor(0, 200, 0), 2));
 
-        series_2->setPen(QPen(QColor(0, 200, 0), 2));
+        QLineSeries* series_2_2 = new QLineSeries();
+        series_2_2->append(19, 0);
+        series_2_2->append(50, 1);
+        series_2_2->append(81, 0);
+        series_2_2->setPen(QPen(QColor(0, 0, 200), 2));
+
+        QLineSeries* series_2_3 = new QLineSeries();
+        series_2_3->append(80, 0);
+        series_2_3->append(120, 1);
+        series_2_3->append(161, 0);
+        series_2_3->setPen(QPen(QColor(200, 0, 0), 2));
 
         QLineSeries* vLine_2 = new QLineSeries();
-        vLine_2->append(5, 0);
-        vLine_2->append(5, 10);
-        QPen vPen_2(Qt::red);
+        vLine_1->append(5, 0);
+        vLine_1->append(5, 1);
+        QPen vPen_2(Qt::yellow);
         vPen_2.setStyle(Qt::SolidLine);
         vPen_2.setWidth(2);
         vLine_2->setPen(vPen_2);
 
         QChart* chart_2 = new QChart();
         chart_2->legend()->hide();
-        chart_2->addSeries(series_2);
+        chart_2->addSeries(series_2_1);
+        chart_2->addSeries(series_2_2);
+        chart_2->addSeries(series_2_3);
         chart_2->addSeries(vLine_2);
         chart_2->createDefaultAxes();
         chart_2->setTitle("Longest Line Size");
@@ -111,26 +129,38 @@ namespace QLogicaeRulex
         _ui->horizontalLayout_9->addWidget(chartView_2);
 
 
-        QLineSeries* series_3 = new QLineSeries();
-        series_3->append(0, 6);
-        series_3->append(2, 4);
-        series_3->append(3, 8);
-        series_3->append(7, 4);
-        series_3->append(10, 5);
 
-        series_3->setPen(QPen(QColor(0, 200, 0), 2));
+        QLineSeries* series_3_1 = new QLineSeries();
+        series_3_1->append(0, 0);
+        series_3_1->append(10, 1);
+        series_3_1->append(21, 0);
+        series_3_1->setPen(QPen(QColor(0, 200, 0), 2));
+
+        QLineSeries* series_3_2 = new QLineSeries();
+        series_3_2->append(19, 0);
+        series_3_2->append(30, 1);
+        series_3_2->append(41, 0);
+        series_3_2->setPen(QPen(QColor(0, 0, 200), 2));
+
+        QLineSeries* series_3_3 = new QLineSeries();
+        series_3_3->append(39, 0);
+        series_3_3->append(60, 1);
+        series_3_3->append(81, 0);
+        series_3_3->setPen(QPen(QColor(200, 0, 0), 2));
 
         QLineSeries* vLine_3 = new QLineSeries();
-        vLine_3->append(5, 0);
-        vLine_3->append(5, 10);
-        QPen vPen_3(Qt::red);
+        vLine_1->append(5, 0);
+        vLine_1->append(5, 1);
+        QPen vPen_3(Qt::yellow);
         vPen_3.setStyle(Qt::SolidLine);
         vPen_3.setWidth(2);
         vLine_3->setPen(vPen_3);
 
         QChart* chart_3 = new QChart();
         chart_3->legend()->hide();
-        chart_3->addSeries(series_3);
+        chart_3->addSeries(series_3_1);
+        chart_3->addSeries(series_3_2);
+        chart_3->addSeries(series_3_3);
         chart_3->addSeries(vLine_3);
         chart_3->createDefaultAxes();
         chart_3->setTitle("Organization");
@@ -152,8 +182,37 @@ namespace QLogicaeRulex
         chartView_3->setFixedSize(400, 250);
 
         _ui->horizontalLayout_7->addWidget(chartView_3);
-	}
 
+        connect(_ui->pushButton_10, &QPushButton::pressed,
+            this, [this]()
+            {
+                _on_input_changed();
+            }
+        );
+    }
+
+    void Evaluation::_on_input_changed()
+    {
+        _ui->verticalWidget_2->hide();
+        _ui->verticalWidget_2->setVisible(false);
+
+        QString fileName = QFileDialog::getOpenFileName(
+            this,
+            "Open File",
+            "",
+            "All Files (*);;Text Files (*.txt)"
+        );
+
+        if (fileName.isEmpty())
+        {
+            return;
+        }
+
+        _ui->label_15->setText(fileName);
+
+        _ui->verticalWidget_2->show();
+        _ui->verticalWidget_2->setVisible(true);
+    }
 	Evaluation::~Evaluation()
 	{
         delete _ui;
@@ -162,20 +221,5 @@ namespace QLogicaeRulex
 	void Evaluation::showEvent(QShowEvent* event)
 	{
 
-        /*
-        QString fileName = QFileDialog::getOpenFileName(
-            this,
-            "Open File",
-            "",
-            "All Files (*);;Text Files (*.txt)"
-        );
-
-        if (!fileName.isEmpty())
-        {
-            _ui->label->setText(fileName);
-        }
-
-        
-        */
 	}
 }

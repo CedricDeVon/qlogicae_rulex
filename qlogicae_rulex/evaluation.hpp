@@ -19,6 +19,8 @@ namespace QLogicaeRulex
 
 	protected:
 		void showEvent(QShowEvent* event) override;
+		void _setup_widgets();
+		void _on_input_changed();
 
 	private:
 		Ui::EvaluationClass* _ui;

@@ -53,23 +53,6 @@ namespace QLogicaeRulexCore
         std::string text = "";
     };
 
-    /*
-    Fuzzification
-    - Line Count n
-    - Longest Line Size n
-    - Degree of Memberships [n]
-
-    Fuzzy Rules
-    - IF [] AND [], THEN []
-
-    Defuzzification
-    - Areas [n]
-    - Centroid [n]
-    - Degree of Truths [n]
-    - Final Result
-
-    */
-
     struct FuzzyExpertSystemAIOutput
     {
         CodeLexerOutput code_lexer_output;
