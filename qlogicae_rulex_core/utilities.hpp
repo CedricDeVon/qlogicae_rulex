@@ -86,6 +86,11 @@ namespace QLogicaeRulexCore
     {
     public:        
         QLogicaeCore::RocksDBDatabase APPLICATION_SETTINGS_CACHE;
+
+        int APPLICATION_SETTINGS_CACHE_SCREEN_TYPE;
+        
+        const std::string APPLICATION_SETTINGS_CACHE_SCREEN_TYPE_KEY =
+            "APPLICATION_SETTINGS_CACHE_SCREEN_TYPE_KEY";
         
         const std::string APPLICATION_LOGO =
             ":/Application/qlogicae/application/assets/application.ico";
@@ -166,6 +171,8 @@ namespace QLogicaeRulexCore
             { "mixed", FuzzyExpertSystemAIOrganizationLevelClassification::MIXED },
             { "unorganized", FuzzyExpertSystemAIOrganizationLevelClassification::UNORGANIZED }
         };
+
+        void setup();
 
         static Utilities& get_instance();
 

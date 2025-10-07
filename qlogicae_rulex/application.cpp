@@ -42,7 +42,7 @@ namespace QLogicaeRulex
             )
         );
         _change_screen_type(
-            3
+            QLogicaeRulexCore::UTILITIES.APPLICATION_SETTINGS_CACHE_SCREEN_TYPE
         );
     }
 
@@ -91,12 +91,10 @@ namespace QLogicaeRulex
             }
         );
 
-        /*
         connect(_mainmenu_widget, QOverload<int>::of(&MainMenu::on_screen_changed), this, [this](int index)
             {
                 _change_screen_type(index);
             });
-        */
     }
 
     void Application::_change_screen_type(uint8_t index)

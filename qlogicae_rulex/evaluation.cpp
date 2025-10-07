@@ -302,6 +302,7 @@ namespace QLogicaeRulex
                 label_text += ", ";
             }
         }
+
         _ui->label_34->setText(QString::fromStdString(label_text));
         _ui->label_33->setText(QString::fromStdString(absl::StrCat(output.code_lexer_output.longest_line_size)));
         if (size_a > 1)

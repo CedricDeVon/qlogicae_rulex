@@ -26,25 +26,27 @@ namespace QLogicaeRulex
 		connect(_ui->pushButton_8, &QPushButton::clicked, this, [this]()
 			{
 				_change_widget(_ui->pushButton_8, _evaluation_widget);
-			});
+			}
+		);
 
 		connect(_ui->pushButton_7, &QPushButton::clicked, this, [this]()
 			{
 				_change_widget(_ui->pushButton_7, _settings_widget);
-			});
+			}
+		);
 
 		connect(_ui->pushButton_4, &QPushButton::clicked, this, [this]()
 			{
 				_change_widget(_ui->pushButton_4, _about_widget);
-			});
+			}
+		);
 
-		/*
 		connect(_settings_widget, QOverload<int>::of(
 			&Settings::on_screen_type_changed), this, [this](int index)
 			{
 				emit on_screen_changed(index);
-			});
-		*/
+			}
+		);
 	}
 
 	MainMenu::~MainMenu()

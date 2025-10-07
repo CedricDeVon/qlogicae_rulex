@@ -2,6 +2,11 @@
 
 #include "ui_settings.h"
 
+namespace Ui
+{
+	class SettingsClass;
+}
+
 namespace QLogicaeRulex
 {
 	class Settings : public QWidget
@@ -12,7 +17,12 @@ namespace QLogicaeRulex
 		explicit Settings(QWidget* parent = nullptr);
 		~Settings();
 
+	signals:
+		void on_screen_type_changed(int);
+
 	private:
-		Ui::SettingsClass _ui;
+		Ui::SettingsClass* _ui;
+
+		void _setup_widgets();
 	};
 }
