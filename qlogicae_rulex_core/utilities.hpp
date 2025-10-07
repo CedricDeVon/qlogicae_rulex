@@ -25,7 +25,7 @@ namespace QLogicaeRulexCore
 
     struct CodeLexerInput
     {
-        std::string text = "";
+        std::string file_path = "";
     };
 
     struct CodeLexerOutput
@@ -50,7 +50,7 @@ namespace QLogicaeRulexCore
 
     struct FuzzyExpertSystemAIInput
     {
-        std::string text = "";
+        std::string file_path = "";
     };
 
     struct FuzzyExpertSystemAIOutput

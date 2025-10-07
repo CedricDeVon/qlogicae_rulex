@@ -23,6 +23,8 @@ namespace QLogicaeRulexCore
         CodeLexer& operator = (CodeLexer&&) = delete;
 
         CodeLexer& operator = (const CodeLexer&) = delete;
+
+        QLogicaeCore::TextFileIO _file;
     };
 
     inline static CodeLexer& CODE_LEXER =

@@ -4,12 +4,28 @@
 
 namespace QLogicaeRulexCore
 {
+    bool Calculator::is_below_bounds(
+        const FuzzyExpertSystemAIInputRange& range,
+        const double& value
+    )
+    {
+        return (range.minimum > value);
+    }
+
     bool Calculator::is_within_bounds(
         const FuzzyExpertSystemAIInputRange& range,
         const double& value
     )
     {
         return (range.minimum <= value && value <= range.maximum);
+    }
+    
+    bool Calculator::is_above_bounds(
+        const FuzzyExpertSystemAIInputRange& range,
+        const double& value
+    )
+    {
+        return (range.maximum < value);
     }
 
     double Calculator::calculate_degree_of_membership(

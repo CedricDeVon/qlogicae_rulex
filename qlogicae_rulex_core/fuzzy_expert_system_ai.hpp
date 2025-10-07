@@ -36,6 +36,14 @@ namespace QLogicaeRulexCore
         
         FuzzyExpertSystemAI& operator = (const FuzzyExpertSystemAI&) = delete;
 
+        const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& get_line_count_level_input_variables();
+
+        const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& get_longest_line_size_level_input_variables();
+
+        const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& get_organization_level_output_variables();
+
+        const std::unordered_map<std::string, std::unordered_map<std::string, std::string>>& get_organization_level_output_variable_fuzzy_ruleset();
+
         void _extract_code_lexer_data(
             const FuzzyExpertSystemAIInput& input,
             CodeLexerOutput& code_lexer_output

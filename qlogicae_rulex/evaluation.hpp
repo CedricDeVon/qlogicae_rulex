@@ -24,6 +24,10 @@ namespace QLogicaeRulex
 
 	private:
 		Ui::EvaluationClass* _ui;
+
+		QLineSeries* _vLine_1;
+		QLineSeries* _vLine_2;
+		QLineSeries* _vLine_3;
 	};
 }
 

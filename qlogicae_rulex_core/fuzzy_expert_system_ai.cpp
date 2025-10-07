@@ -8,23 +8,23 @@ namespace QLogicaeRulexCore
     {
         _line_count_level_input_variables =
         {
-            { "small", { 0, 50, 110 } },
-            { "medium", { 90, 200, 410 } },
-            { "large", { 390, 1000, 1610 } }
+            { "small", { 0, 50, 125 } },
+            { "medium", { 75, 250, 525 } },
+            { "large", { 475, 2000, 3525 } }
         };
 
         _longest_line_size_level_input_variables =
         {
-            { "short", { 0, 10, 21 } },
-            { "medium", { 19, 50, 81 } },
-            { "long", { 80, 120, 161 } }
+            { "short", { 0, 20, 50 } },
+            { "medium", { 30, 60, 90 } },
+            { "long", { 70, 500, 1010 } }
         };
 
         _organization_level_output_variables =
         {
-            { "organized", { 0, 10, 21 } },
-            { "mixed", { 19, 30, 41 } },
-            { "unorganized", { 39, 60, 81 } }
+            { "organized", { 0, 10, 25 } },
+            { "mixed", { 15, 30, 45 } },
+            { "unorganized", { 35, 60, 85 } }
         };
 
         _organization_level_output_variable_fuzzy_ruleset =
@@ -54,6 +54,30 @@ namespace QLogicaeRulexCore
                 }
             }
         };
+    }
+
+    const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& 
+        FuzzyExpertSystemAI::get_line_count_level_input_variables()
+    {
+        return _line_count_level_input_variables;
+    }
+
+    const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& 
+        FuzzyExpertSystemAI::get_longest_line_size_level_input_variables()
+    {
+        return _longest_line_size_level_input_variables;
+    }
+
+    const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& 
+        FuzzyExpertSystemAI::get_organization_level_output_variables()
+    {
+        return _organization_level_output_variables;
+    }
+
+    const std::unordered_map<std::string, std::unordered_map<std::string, std::string>>& 
+        FuzzyExpertSystemAI::get_organization_level_output_variable_fuzzy_ruleset()
+    {
+        return _organization_level_output_variable_fuzzy_ruleset;
     }
 
     FuzzyExpertSystemAIOutput FuzzyExpertSystemAI::evaluate(
@@ -162,7 +186,7 @@ namespace QLogicaeRulexCore
     )
     {
         code_lexer_output = CODE_LEXER.evaluate({
-            .text = input.text
+            .file_path = input.file_path
         });
     }
 
@@ -177,8 +201,8 @@ namespace QLogicaeRulexCore
         )
         {
             if (CALCULATOR.is_within_bounds(
-                    value,
-                    code_lexer_output.line_count
+                value,
+                code_lexer_output.line_count
                 )
             )
             {
@@ -191,12 +215,12 @@ namespace QLogicaeRulexCore
         for (const auto& [key, value] :
             _longest_line_size_level_input_variables
         )
-        {
+        {            
             if (CALCULATOR.is_within_bounds(
-                    value,
-                    code_lexer_output.longest_line_size
-                )
+                value,
+                code_lexer_output.longest_line_size
             )
+                )
             {
                 selected_longest_line_size_level_input_variables.push_back(
                     key

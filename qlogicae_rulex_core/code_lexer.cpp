@@ -17,12 +17,17 @@ namespace QLogicaeRulexCore
         {
             CodeLexerOutput output;
 
-            if (!input.text.size())
+            std::ifstream file(input.file_path);
+            if (!file.is_open())
             {
-                return output;
+                return
+                {
+                    .is_successful = false
+                };
             }
 
-            for (const auto& line : absl::StrSplit(input.text, '\n'))
+            std::string line;
+            while (std::getline(file, line))
             {
                 if (output.longest_line_size < line.size())
                 {

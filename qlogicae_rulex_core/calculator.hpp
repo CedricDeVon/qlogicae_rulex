@@ -7,7 +7,17 @@ namespace QLogicaeRulexCore
     class Calculator
     {
     public:
+        bool is_below_bounds(
+            const FuzzyExpertSystemAIInputRange& range,
+            const double& value
+        );
+        
         bool is_within_bounds(
+            const FuzzyExpertSystemAIInputRange& range,
+            const double& value
+        );
+
+        bool is_above_bounds(
             const FuzzyExpertSystemAIInputRange& range,
             const double& value
         );
