@@ -2,7 +2,7 @@
 </br>
 
 <div style="width: 100%; display: flex; justify-content: center;">
-    <image src="./qlogicae/qlogicae/assets/qlogicae.application.ico" style="width: 128px;">
+    <image src="./qlogicae/qlogicae/assets/application.ico" style="width: 128px;">
 </div>
 
 </br>
