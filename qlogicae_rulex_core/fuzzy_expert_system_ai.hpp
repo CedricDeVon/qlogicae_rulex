@@ -18,7 +18,7 @@ namespace QLogicaeRulexCore
     protected:
         std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _line_count_level_input_variables;
 
-        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _longest_line_size_level_input_variables;
+        std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _average_line_size_level_input_variables;
 
         std::unordered_map<std::string, FuzzyExpertSystemAIInputRange> _organization_level_output_variables;
 
@@ -38,7 +38,7 @@ namespace QLogicaeRulexCore
 
         const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& get_line_count_level_input_variables();
 
-        const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& get_longest_line_size_level_input_variables();
+        const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& get_average_line_size_level_input_variables();
 
         const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& get_organization_level_output_variables();
 
@@ -52,13 +52,13 @@ namespace QLogicaeRulexCore
         void _evaluate_membership_function(
             CodeLexerOutput& code_lexer_output,
             std::vector<std::string>& selected_line_count_level_input_variables,
-            std::vector<std::string>& selected_longest_line_size_level_input_variables
+            std::vector<std::string>& selected_average_line_size_level_input_variables
         );
 
         void _evaluate_degree_of_memberships(
             CodeLexerOutput& code_lexer_output,
             std::vector<std::string>& selected_line_count_level_input_variables,
-            std::vector<std::string>& selected_longest_line_size_level_input_variables,
+            std::vector<std::string>& selected_average_line_size_level_input_variables,
             std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships,
             std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships
         );
@@ -66,7 +66,7 @@ namespace QLogicaeRulexCore
         void _evaluate_fuzzification_rules(
             CodeLexerOutput& code_lexer_output,
             std::vector<std::string>& selected_line_count_level_input_variables,
-            std::vector<std::string>& selected_longest_line_size_level_input_variables,
+            std::vector<std::string>& selected_average_line_size_level_input_variables,
             std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships,
             std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships,
             std::unordered_map<std::string, double>& selected_organized_level_outptut_variables

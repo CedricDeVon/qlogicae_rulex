@@ -102,7 +102,7 @@ namespace QLogicaeRulex
         chart_2->addSeries(series_2_3);
         chart_2->addSeries(_vLine_2);
         chart_2->createDefaultAxes();
-        chart_2->setTitle("Longest Line Size");
+        chart_2->setTitle("Average Line Size");
 
         _vLine_2->attachAxis(chart_2->axes(Qt::Horizontal).first());
         _vLine_2->attachAxis(chart_2->axes(Qt::Vertical).first());
@@ -284,19 +284,19 @@ namespace QLogicaeRulex
         _vLine_1->append(output.code_lexer_output.line_count, 1);
 
         _vLine_2->clear();
-        _vLine_2->append(output.code_lexer_output.longest_line_size, 0);
-        _vLine_2->append(output.code_lexer_output.longest_line_size, 1);
+        _vLine_2->append(output.code_lexer_output.average_line_size, 0);
+        _vLine_2->append(output.code_lexer_output.average_line_size, 1);
 
         _vLine_3->clear();
         _vLine_3->append(output.centroid, 0);
         _vLine_3->append(output.centroid, 1);
 
-        size_a = output.selected_longest_line_size_level_input_variables.size(),
+        size_a = output.selected_average_line_size_level_input_variables.size(),
         size_b = size_a - 1;
         label_text = "";
         for (index_a = 0; index_a < size_a; ++index_a)
         {
-            label_text += output.selected_longest_line_size_level_input_variables[index_a];
+            label_text += output.selected_average_line_size_level_input_variables[index_a];
             if (index_a < size_b)
             {
                 label_text += ", ";
@@ -304,7 +304,7 @@ namespace QLogicaeRulex
         }
 
         _ui->label_34->setText(QString::fromStdString(label_text));
-        _ui->label_33->setText(QString::fromStdString(absl::StrCat(output.code_lexer_output.longest_line_size)));
+        _ui->label_33->setText(QString::fromStdString(absl::StrCat(output.code_lexer_output.average_line_size)));
         if (size_a > 1)
         {
             _ui->label_34->setStyleSheet(QString::fromStdString(style_4));
@@ -312,7 +312,7 @@ namespace QLogicaeRulex
         }
         else if (size_a == 1)
         {
-            std::string variable = output.selected_longest_line_size_level_input_variables[0];
+            std::string variable = output.selected_average_line_size_level_input_variables[0];
             if (variable == "short")
             {
                 _ui->label_34->setStyleSheet(QString::fromStdString(style_1));
@@ -381,12 +381,12 @@ namespace QLogicaeRulex
             }
         }
 
-        size_a = output.selected_longest_line_size_level_input_variables.size(),
+        size_a = output.selected_average_line_size_level_input_variables.size(),
             size_b = size_a - 1;
         label_text = "";
         for (index_a = 0; index_a < size_a; ++index_a)
         {
-            label_text += absl::StrCat(output.selected_longest_line_size_level_input_variables[index_a], " (", output.selected_longest_line_size_level_input_variable_degree_of_memberships[index_a], ")");
+            label_text += absl::StrCat(output.selected_average_line_size_level_input_variables[index_a], " (", output.selected_average_line_size_level_input_variable_degree_of_memberships[index_a], ")");
             if (index_a < size_b)
             {
                 label_text += ", ";
@@ -399,7 +399,7 @@ namespace QLogicaeRulex
         }
         else if (size_a == 1)
         {
-            std::string variable = output.selected_longest_line_size_level_input_variables[0];
+            std::string variable = output.selected_average_line_size_level_input_variables[0];
             if (variable == "short")
             {
                 _ui->label_20->setStyleSheet(QString::fromStdString(style_1));

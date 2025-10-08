@@ -34,8 +34,10 @@ namespace QLogicaeRulexCore
                     output.longest_line_size = line.size();
                 }
 
+                output.average_line_size += line.size();
                 ++output.line_count;
             }
+            output.average_line_size /= output.line_count;
 
             return output;
         }

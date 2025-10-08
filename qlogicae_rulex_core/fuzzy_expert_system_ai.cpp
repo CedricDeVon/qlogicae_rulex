@@ -13,7 +13,7 @@ namespace QLogicaeRulexCore
             { "large", { 475, 2000, 3525 } }
         };
 
-        _longest_line_size_level_input_variables =
+        _average_line_size_level_input_variables =
         {
             { "short", { 0, 20, 50 } },
             { "medium", { 30, 60, 90 } },
@@ -63,9 +63,9 @@ namespace QLogicaeRulexCore
     }
 
     const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& 
-        FuzzyExpertSystemAI::get_longest_line_size_level_input_variables()
+        FuzzyExpertSystemAI::get_average_line_size_level_input_variables()
     {
-        return _longest_line_size_level_input_variables;
+        return _average_line_size_level_input_variables;
     }
 
     const std::unordered_map<std::string, FuzzyExpertSystemAIInputRange>& 
@@ -92,12 +92,12 @@ namespace QLogicaeRulexCore
                 output.code_lexer_output;
             std::vector<std::string>& selected_line_count_level_input_variables =
                 output.selected_line_count_level_input_variables;
-            std::vector<std::string>& selected_longest_line_size_level_input_variables =
-                output.selected_longest_line_size_level_input_variables;
+            std::vector<std::string>& selected_average_line_size_level_input_variables =
+                output.selected_average_line_size_level_input_variables;
             std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships =
                 output.selected_line_count_level_input_variable_degree_of_memberships;
-            std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships =
-                output.selected_longest_line_size_level_input_variable_degree_of_memberships;
+            std::vector<double>& selected_average_line_size_level_input_variable_degree_of_memberships =
+                output.selected_average_line_size_level_input_variable_degree_of_memberships;
             std::unordered_map<std::string, double>& selected_organized_level_outptut_variables =
                 output.selected_organized_level_outptut_variables;
             std::unordered_map<std::string, double>& defuzzified_organized_level_outptut_results =
@@ -118,23 +118,23 @@ namespace QLogicaeRulexCore
             _evaluate_membership_function(
                 code_lexer_output,
                 selected_line_count_level_input_variables,
-                selected_longest_line_size_level_input_variables
+                selected_average_line_size_level_input_variables
             );
 
             _evaluate_degree_of_memberships(
                 code_lexer_output,
                 selected_line_count_level_input_variables,
-                selected_longest_line_size_level_input_variables,
+                selected_average_line_size_level_input_variables,
                 selected_line_count_level_input_variable_degree_of_memberships,
-                selected_longest_line_size_level_input_variable_degree_of_memberships
+                selected_average_line_size_level_input_variable_degree_of_memberships
             );
 
             _evaluate_fuzzification_rules(
                 code_lexer_output,
                 selected_line_count_level_input_variables,
-                selected_longest_line_size_level_input_variables,
+                selected_average_line_size_level_input_variables,
                 selected_line_count_level_input_variable_degree_of_memberships,
-                selected_longest_line_size_level_input_variable_degree_of_memberships,
+                selected_average_line_size_level_input_variable_degree_of_memberships,
                 selected_organized_level_outptut_variables
             );
 
@@ -193,7 +193,7 @@ namespace QLogicaeRulexCore
     void FuzzyExpertSystemAI::_evaluate_membership_function(
         CodeLexerOutput& code_lexer_output,
         std::vector<std::string>& selected_line_count_level_input_variables,
-        std::vector<std::string>& selected_longest_line_size_level_input_variables
+        std::vector<std::string>& selected_average_line_size_level_input_variables
     )
     {
         for (const auto& [key, value] :
@@ -213,16 +213,16 @@ namespace QLogicaeRulexCore
         }
 
         for (const auto& [key, value] :
-            _longest_line_size_level_input_variables
+            _average_line_size_level_input_variables
         )
         {            
             if (CALCULATOR.is_within_bounds(
                 value,
-                code_lexer_output.longest_line_size
+                code_lexer_output.average_line_size
             )
                 )
             {
-                selected_longest_line_size_level_input_variables.push_back(
+                selected_average_line_size_level_input_variables.push_back(
                     key
                 );
             }
@@ -232,9 +232,9 @@ namespace QLogicaeRulexCore
     void FuzzyExpertSystemAI::_evaluate_degree_of_memberships(
         CodeLexerOutput& code_lexer_output,
         std::vector<std::string>& selected_line_count_level_input_variables,
-        std::vector<std::string>& selected_longest_line_size_level_input_variables,
+        std::vector<std::string>& selected_average_line_size_level_input_variables,
         std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships,
-        std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships
+        std::vector<double>& selected_average_line_size_level_input_variable_degree_of_memberships
     )
     {        
         for (const auto& line_count_level_input_variable :
@@ -248,13 +248,13 @@ namespace QLogicaeRulexCore
             );
         }
 
-        for (const auto& longest_line_size_level_input_variable :
-            selected_longest_line_size_level_input_variables)
+        for (const auto& average_line_size_level_input_variable :
+            selected_average_line_size_level_input_variables)
         {
-            selected_longest_line_size_level_input_variable_degree_of_memberships.push_back(
+            selected_average_line_size_level_input_variable_degree_of_memberships.push_back(
                 CALCULATOR.calculate_degree_of_membership(
-                    _longest_line_size_level_input_variables[longest_line_size_level_input_variable],
-                    code_lexer_output.longest_line_size
+                    _average_line_size_level_input_variables[average_line_size_level_input_variable],
+                    code_lexer_output.average_line_size
                 )
             );
         }
@@ -263,18 +263,18 @@ namespace QLogicaeRulexCore
     void FuzzyExpertSystemAI::_evaluate_fuzzification_rules(
         CodeLexerOutput& code_lexer_output,
         std::vector<std::string>& selected_line_count_level_input_variables,
-        std::vector<std::string>& selected_longest_line_size_level_input_variables,
+        std::vector<std::string>& selected_average_line_size_level_input_variables,
         std::vector<double>& selected_line_count_level_input_variable_degree_of_memberships,
-        std::vector<double>& selected_longest_line_size_level_input_variable_degree_of_memberships,
+        std::vector<double>& selected_average_line_size_level_input_variable_degree_of_memberships,
         std::unordered_map<std::string, double>& selected_organized_level_outptut_variables
     )
     {        
         size_t line_count_level_input_variable_index,
-            longest_line_size_level_input_variable_index,
+            average_line_size_level_input_variable_index,
             line_count_level_input_variables_size =
                 selected_line_count_level_input_variables.size(),
-            longest_line_size_level_input_variables_size =
-                selected_longest_line_size_level_input_variables.size();
+            average_line_size_level_input_variables_size =
+                selected_average_line_size_level_input_variables.size();
 
         for (line_count_level_input_variable_index = 0;
             line_count_level_input_variable_index <
@@ -287,25 +287,25 @@ namespace QLogicaeRulexCore
             std::string selected_line_count_level_input_variable_name =
                 selected_line_count_level_input_variables
                     [line_count_level_input_variable_index];
-            for (longest_line_size_level_input_variable_index = 0;
-                longest_line_size_level_input_variable_index <
-                    longest_line_size_level_input_variables_size;
-                ++longest_line_size_level_input_variable_index)
+            for (average_line_size_level_input_variable_index = 0;
+                average_line_size_level_input_variable_index <
+                    average_line_size_level_input_variables_size;
+                ++average_line_size_level_input_variable_index)
             {
-                double selected_longest_line_size_level_input_variable_degree_of_membership =
-                    selected_longest_line_size_level_input_variable_degree_of_memberships
-                        [longest_line_size_level_input_variable_index];
+                double selected_average_line_size_level_input_variable_degree_of_membership =
+                    selected_average_line_size_level_input_variable_degree_of_memberships
+                        [average_line_size_level_input_variable_index];
                 double minimum_degree_of_membership = std::min(
                     selected_line_count_level_input_variable_degree_of_membership,
-                    selected_longest_line_size_level_input_variable_degree_of_membership
+                    selected_average_line_size_level_input_variable_degree_of_membership
                 );
-                std::string selected_longest_line_size_name =
-                    selected_longest_line_size_level_input_variables
-                        [longest_line_size_level_input_variable_index];
+                std::string selected_average_line_size_name =
+                    selected_average_line_size_level_input_variables
+                        [average_line_size_level_input_variable_index];
                 std::string selected_organized_level_output_variable =
                     _organization_level_output_variable_fuzzy_ruleset
                         [selected_line_count_level_input_variable_name]
-                        [selected_longest_line_size_name];
+                        [selected_average_line_size_name];
 
                 if (!selected_organized_level_outptut_variables
                     .contains(

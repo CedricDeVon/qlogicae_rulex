@@ -9,7 +9,7 @@ namespace QLogicaeRulexCore
         LARGE
     };
 
-    enum class FuzzyExpertSystemAILongestLineSizeLevelVariable : uint8_t
+    enum class FuzzyExpertSystemAIAverageLineSizeLevelVariable : uint8_t
     {
         SHORT,
         MEDIUM,
@@ -37,6 +37,8 @@ namespace QLogicaeRulexCore
         double line_count = 0;
 
         double longest_line_size = 0;
+
+        double average_line_size = 0;
     };
 
     struct FuzzyExpertSystemAIInputRange
@@ -59,11 +61,11 @@ namespace QLogicaeRulexCore
         
         std::vector<std::string> selected_line_count_level_input_variables;
         
-        std::vector<std::string> selected_longest_line_size_level_input_variables;
+        std::vector<std::string> selected_average_line_size_level_input_variables;
         
         std::vector<double> selected_line_count_level_input_variable_degree_of_memberships;
 
-        std::vector<double> selected_longest_line_size_level_input_variable_degree_of_memberships;
+        std::vector<double> selected_average_line_size_level_input_variable_degree_of_memberships;
 
         std::unordered_map<std::string, double> selected_organized_level_outptut_variables;
 
@@ -144,18 +146,18 @@ namespace QLogicaeRulexCore
             { "large", FuzzyExpertSystemAILineCounLevelVariable::LARGE}
         };
 
-        const std::unordered_map<FuzzyExpertSystemAILongestLineSizeLevelVariable, std::string> FUZZY_EXPERT_SYSTEM_AI_LONGEST_LINE_SIZE_LEVEL_VARIABLE_ENUMS =
+        const std::unordered_map<FuzzyExpertSystemAIAverageLineSizeLevelVariable, std::string> FUZZY_EXPERT_SYSTEM_AI_LONGEST_LINE_SIZE_LEVEL_VARIABLE_ENUMS =
         {
-            { FuzzyExpertSystemAILongestLineSizeLevelVariable::SHORT, "short" },
-            { FuzzyExpertSystemAILongestLineSizeLevelVariable::MEDIUM, "medium" },
-            { FuzzyExpertSystemAILongestLineSizeLevelVariable::LONG, "long" }
+            { FuzzyExpertSystemAIAverageLineSizeLevelVariable::SHORT, "short" },
+            { FuzzyExpertSystemAIAverageLineSizeLevelVariable::MEDIUM, "medium" },
+            { FuzzyExpertSystemAIAverageLineSizeLevelVariable::LONG, "long" }
         };
 
-        const std::unordered_map<std::string, FuzzyExpertSystemAILongestLineSizeLevelVariable> FUZZY_EXPERT_SYSTEM_AI_LONGEST_LINE_SIZE_LEVEL_VARIABLE_STRINGS =
+        const std::unordered_map<std::string, FuzzyExpertSystemAIAverageLineSizeLevelVariable> FUZZY_EXPERT_SYSTEM_AI_LONGEST_LINE_SIZE_LEVEL_VARIABLE_STRINGS =
         {
-            { "short", FuzzyExpertSystemAILongestLineSizeLevelVariable::SHORT },
-            { "medium", FuzzyExpertSystemAILongestLineSizeLevelVariable::MEDIUM },
-            { "long", FuzzyExpertSystemAILongestLineSizeLevelVariable::LONG }
+            { "short", FuzzyExpertSystemAIAverageLineSizeLevelVariable::SHORT },
+            { "medium", FuzzyExpertSystemAIAverageLineSizeLevelVariable::MEDIUM },
+            { "long", FuzzyExpertSystemAIAverageLineSizeLevelVariable::LONG }
         };
 
         const std::unordered_map<FuzzyExpertSystemAIOrganizationLevelClassification, std::string> FUZZY_EXPERT_SYSTEM_AI_ORGANIZATION_LEVEL_CLASSIFICATOIN_ENUMS =
