@@ -390,3 +390,4 @@ namespace QLogicaeRulexCore
         return instance;
     }
 }
+
