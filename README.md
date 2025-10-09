@@ -10,12 +10,10 @@
 
 
 <div style="text-align: center;">
-  <h1>[Project Name]</h1>
-  <p style="font-style: italic;">[Project Memo]</p>
+  <h1>QLogicae Rulex</h1>
   <div style="margin: 32px 64px;">
     
-![Version](https://img.shields.io/badge/Version-1.0.0-blue)
-![GTest](https://img.shields.io/badge/GTest-NA-red)
+![Version](https://img.shields.io/badge/Version-1.0.0-green)
 ![Windows](https://img.shields.io/badge/OS-Windows-blue)
 
 ![x64](https://img.shields.io/badge/Architecture-x64-yellow)
@@ -23,12 +21,16 @@
 ![C++](https://img.shields.io/badge/Language-C++-white)
 
 <!--
+<p style="font-style: italic;">[Project Memo]</p>
+
+![x64 MASM](https://img.shields.io/badge/Language-MASM-purple)
+
+![GTest](https://img.shields.io/badge/GTest-NA-red)
 ![License: MIT](https://img.shields.io/badge/License-MIT-white)
 ![iOS](https://img.shields.io/badge/OS-IOS-white)
 ![Linux](https://img.shields.io/badge/OS-Linux-yellow)
 
 ![x86](https://img.shields.io/badge/Architecture-x86-yellow)
-![x64 MASM](https://img.shields.io/badge/Language-MASM-white)
 ![x86 MASM](https://img.shields.io/badge/Language-MASM-white)
 
 [![Gmail](https://img.shields.io/badge/Gmail-Visit-red)](sample@gmail.com)
@@ -40,6 +42,7 @@
 [![Slack](https://img.shields.io/badge/Slack-Visit-green?logo=slack)](https://sample.slack.com)
 [![Website](https://img.shields.io/badge/Website-Visit-white)](https://sample.com)
 -->
+
   </div>
 </div>
 
@@ -52,23 +55,25 @@
   <li><a href="#about">About</a></li>
   <ul>
     <li><a href="#about-description">Description</a></li>
+    <li><a href="#about-purpose">Purpose</a></li>
     <li><a href="#about-core-features">Core Features</a></li>
   </ul>
   <li><a href="#getting-started">Getting Started</a>
     <ul>
       <li><a href="#getting-started-pre-requisites">Pre-requisites</a></li>
-      <li><a href="#getting-started-releases">Releases</a></li>
-      <li><a href="#getting-started-installation">Installation</a></li>
-      <li><a href="#getting-started-setup">Setup</a></li>
-      <li><a href="#getting-started-usage-examples">Usage Examples</a></li>
     </ul>
   </li>
-  <li><a href="./qlogicae/qlogicae/documentation/index.md">Extended Documentation</a></li>  
+<!--
+<li><a href="#getting-started-usage-examples">Usage Examples</a></li>
+<li><a href="./qlogicae/qlogicae/documentation/index.md">Extended Documentation</a></li>  
+<li><a href="#getting-started-releases">Releases</a></li>
+<li><a href="#getting-started-installation">Installation</a></li>
+<li><a href="#getting-started-setup">Setup</a></li>
+-->
+
 </ul>
 
 </br>
-
-
 
 <h2 id="about">
   📖 About
@@ -77,17 +82,32 @@
   🧾 Description
 </h3>
 <p>
-  [Overview description. Describe its main purpose, motivation for development, target audience, etc.]
+  QLogicae Rulex is a code style evaluator development tool. It is powered by a Fuzzy 
+Logic AI system for its evaluation functions and is implemented as a Windows platform
+specific, desktop application.
+</p>
+<h3 id="about-purpose">
+  🧾 Description
+</h3>
+<p>
+  Just like any other development tools of its kind, its main purpose is to serve the 
+developer – to improve development efficiency, ergonomics and product quality. This 
+project, QLogicae Rulex, purely specializes on code style consistency evaluation which aims 
+to tell the developer if a given styling guide has been met or not.
 </p>
 <h3 id="about-core-features">
   ⚙️ Core Features
 </h3>
+<p>
+Every type of software is useful in its own right, as long as the context and the needs of 
+the users are met and satisfied. Below shows a list of the application’s core features:  
+</p>
 <ul>
   <li>
-    <h3>[Feature name]</h3>
-    <ul>
-      <li><p>[Feature overview description]</p></li>
-    </ul>
+    <h3>Non-Programming Language Specific Code Style Evaluation</h3>
+  </li>
+  <li>
+    <h3>Timed and Constant Evaluation</h3>
   </li>
 </ul>
 
@@ -102,36 +122,17 @@
   📋 Pre-requisites
 </h3>
 <p>
-  [Describe Operating Systems, System Architecture, Runtime, Programming Language Version, Package Manager, Compiler, Build Tools, Database Systems, Environment Tools, Package Dependencies, Network Access, RAM, Permissions]
+  To avoid further issues, here is a list of pre-requisites to have before using the 
+application yourself.
 </p>
-<h3 id="getting-started-releases">
-  🏷️ Releases
-</h3>
-<p>
-  [Include Binaries, Sources, etc.]
-</p>
-<h3 id="getting-started-installation">
-  📥 Installation
-</h3>
-<p>
-  [Description]
-</p>
-<h3 id="getting-started-setup">
-  🛠️ Setup
-</h3>
-<p>
-  [Description]
-</p>
-<h3 id="getting-started-usage-examples">
-  💡 Usage Examples
-</h3>
-<p>
-  [Description]
-</p>
+<ul>
+  <li>Windows 11/10</li>
+</ul>
 
 </br>
 
 
+<!--
 
 <h2 id="extended-documentation">
   🗂️ Extended Documentation
@@ -142,3 +143,4 @@
 <a href="./qlogicae/qlogicae/documentation/index.md">🔗 Navigate To Page</a>
 
 </br>
+-->
